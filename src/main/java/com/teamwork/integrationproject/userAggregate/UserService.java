@@ -2,6 +2,7 @@ package com.teamwork.integrationproject.userAggregate;
 
 import com.teamwork.integrationproject.userAggregate.entiy.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 
@@ -12,9 +13,10 @@ public class UserService
     @Autowired
     private IUserRepository userRepository;
 
-    public String test()
+    @Scheduled(cron = "0/1 * * * * *")
+    public void test()
     {
-        return "hello word!";
+        System.out.println( "hello word!");
     }
 
     public User selectUserId(int id)

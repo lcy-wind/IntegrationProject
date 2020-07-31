@@ -7,7 +7,7 @@ import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
 @MapperScan("com.teamwork.integrationproject.userAggregate")
-@ComponentScan("com.teamwork.integrationproject.userAggregate")
+//@ComponentScan({"com.teamwork.integrationproject.api","com.teamwork.integrationproject.userAggregate"})
 public class IntegrationProjectApplication
 {
     public static void main(String[] args)
