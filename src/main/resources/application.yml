@@ -15,4 +15,8 @@ spring:
 #    com:
 #      infoepoch: debug
 
-
+api:
+  name: 小红
+  url-map:
+    baidu: https://www.baidu.com/
+    project: http://localhost:8081/boot/user/test

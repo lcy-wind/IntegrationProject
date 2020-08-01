@@ -26,9 +26,8 @@ class IntegrationProjectApplicationTests
     }
 
     @Test
-    void contextLoads()
+    void kk()
     {
-
     }
 
     @Test
