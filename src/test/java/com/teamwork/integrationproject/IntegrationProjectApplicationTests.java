@@ -1,5 +1,6 @@
 package com.teamwork.integrationproject;
 
+import com.teamwork.integrationproject.common.props.ApiProperties;
 import com.teamwork.integrationproject.userAggregate.UserService;
 import com.teamwork.integrationproject.userAggregate.entiy.User;
 import org.junit.jupiter.api.Test;
@@ -19,6 +20,9 @@ class IntegrationProjectApplicationTests
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private ApiProperties properties;
+
     @Test
     public void testDataSource() throws SQLException
     {
@@ -28,6 +32,7 @@ class IntegrationProjectApplicationTests
     @Test
     void kk()
     {
+        System.out.println(properties.getName());
     }
 
     @Test
