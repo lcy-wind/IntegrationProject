@@ -45,9 +45,7 @@ public class TUserController {
         tUser.setUAge((Integer) params.get("uAge"));
         tUser.setUSex((String) params.get("uSex"));
         tUser.setUUsername((String) params.get("uUsername"));
-//        return itUserService.insertInto(tUser);
-        System.out.println(tUser);
-        return null;
+        return itUserService.insertInto(tUser);
     }
     @PostMapping("add")
     public Result addOne(@RequestBody TUser tUser){
