@@ -72,6 +72,18 @@
                 </exclusion>
             </exclusions>
         </dependency>
+        <!--mybatis-plus逆行工程所需两个jar包，选用freemarker引擎，有其它引擎，参照官网-->
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-generator</artifactId>
+            <version>3.1.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.freemarker</groupId>
+            <artifactId>freemarker</artifactId>
+            <version>2.3.30</version>
+        </dependency>
+
     </dependencies>
 
     <build>
