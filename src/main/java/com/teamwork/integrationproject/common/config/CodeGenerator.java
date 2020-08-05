@@ -47,7 +47,7 @@ public class CodeGenerator {
         // 全局配置
         GlobalConfig gc = new GlobalConfig();
         String projectPath = System.getProperty("user.dir");
-        gc.setOutputDir("D:/1/testGenerator/测试/代码生成");
+        gc.setOutputDir("D:/1/代码生成");
         gc.setAuthor("haoChaoJie");
 
         gc.setOpen(false);
@@ -90,7 +90,7 @@ public class CodeGenerator {
         // 包配置
         PackageConfig pc = new PackageConfig();
         pc.setModuleName(scanner("模块名"));
-        pc.setParent("com.superzp");
+        pc.setParent("com");
         mpg.setPackageInfo(pc);
 
         // 自定义配置
