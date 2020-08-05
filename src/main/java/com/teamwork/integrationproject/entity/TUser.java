@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.annotation.TableId;
 
 import java.io.Serializable;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -31,12 +32,13 @@ public class TUser implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @TableId(value = "u_id", type = IdType.AUTO)
+    @JsonProperty(value = "uId")
     private Integer uId;
-
+    @JsonProperty(value = "uUsername")
     private String uUsername;
-
+    @JsonProperty(value = "uSex")
     private String uSex;
-
+    @JsonProperty(value = "uAge")
     private Integer uAge;
 
 
