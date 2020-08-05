@@ -1,8 +1,6 @@
 package com.teamwork.integrationproject;
 
 import com.teamwork.integrationproject.common.props.ApiProperties;
-import com.teamwork.integrationproject.userAggregate.UserService;
-import com.teamwork.integrationproject.userAggregate.entiy.User;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -17,8 +15,8 @@ class IntegrationProjectApplicationTests
     @Autowired
     private DataSource dataSource;
 
-    @Autowired
-    private UserService userService;
+//    @Autowired
+//    private ITUserService itUserService;
 
     @Autowired
     private ApiProperties properties;
@@ -38,8 +36,8 @@ class IntegrationProjectApplicationTests
     @Test
     void test()
     {
-        User user = userService.selectUserId(1);
-        System.out.println(user.toString());
+//        User user = itUserService.(1);
+//        System.out.println(user.toString());
     }
 
 }
