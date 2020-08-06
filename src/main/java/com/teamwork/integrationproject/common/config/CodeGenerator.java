@@ -17,6 +17,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * 逆向工程工具类
+ */
 public class CodeGenerator {
 
 

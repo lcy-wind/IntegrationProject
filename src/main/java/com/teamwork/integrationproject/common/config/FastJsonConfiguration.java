@@ -13,6 +13,9 @@ import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 重写http请求，请求参数映射
+ */
 @Configuration
 public class FastJsonConfiguration {
 
