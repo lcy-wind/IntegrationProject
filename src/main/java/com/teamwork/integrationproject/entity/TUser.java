@@ -1,10 +1,12 @@
 package com.teamwork.integrationproject.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 
 import java.io.Serializable;
 
+import com.baomidou.mybatisplus.annotation.TableName;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -23,22 +25,22 @@ import org.springframework.stereotype.Component;
  * @since 2020-08-05
  */
 @Data
-@EqualsAndHashCode(callSuper = false)
-@Accessors(chain = true)
-@AllArgsConstructor
-@NoArgsConstructor
+//@EqualsAndHashCode(callSuper = false)
+//@Accessors(chain = true)
+//@AllArgsConstructor
+//@NoArgsConstructor
+@TableName("t_user")
 public class TUser implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @TableId(value = "u_id", type = IdType.AUTO)
-    @JsonProperty(value = "uId")
+    @TableField(value = "u_id")
     private Integer uId;
-    @JsonProperty(value = "uUsername")
+    @TableField(value = "u_username")
     private String uUsername;
-    @JsonProperty(value = "uSex")
+    @TableField(value = "u_sex")
     private String uSex;
-    @JsonProperty(value = "uAge")
+    @TableField(value = "u_age")
     private Integer uAge;
 
 

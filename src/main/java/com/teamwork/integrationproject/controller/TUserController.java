@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -53,5 +54,10 @@ public class TUserController {
 //        return itUserService.insertInto(tUser);
         return null;
     }
-
+    @GetMapping("qryList")
+    public Result qryList(){
+        List<TUser> tUsers = itUserService.qryList();
+//        return itUserService.insertInto(tUser);
+        return Result.success(tUsers);
+    }
 }
