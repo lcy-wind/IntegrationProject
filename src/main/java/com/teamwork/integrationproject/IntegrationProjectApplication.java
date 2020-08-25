@@ -10,7 +10,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 
 @SpringBootApplication
 @MapperScan("com.teamwork.integrationproject.mapper")
-@ComponentScan(basePackages = {"com.teamwork.integrationproject.controller"})
+@ComponentScan(basePackages = {"com.teamwork"})
 @EnableScheduling
 //集成该类，重写方法用于springboot项目部署
 public class IntegrationProjectApplication extends SpringBootServletInitializer

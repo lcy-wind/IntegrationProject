@@ -3,6 +3,9 @@ package com.teamwork.integrationproject.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.teamwork.integrationproject.entity.TUser;
+import com.teamwork.integrationproject.utils.Result;
+
+import java.util.List;
 
 
 /**
@@ -16,4 +19,7 @@ import com.teamwork.integrationproject.entity.TUser;
 
 public interface ITUserService extends IService<TUser> {
 
+    Result insertInto (TUser tUser);
+
+    List<TUser> qryList();
 }
