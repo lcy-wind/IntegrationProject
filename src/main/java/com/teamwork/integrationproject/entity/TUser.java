@@ -29,7 +29,7 @@ public class TUser implements Serializable {
     @TableId(value = "u_id", type = IdType.AUTO)
     private Integer uId;
 
-    private String uUsername;
+    private String uUserName;
 
     private String uSex;
 
