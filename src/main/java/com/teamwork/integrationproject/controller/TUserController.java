@@ -45,7 +45,7 @@ public class TUserController {
         tUser.setUId((Integer) params.get("uId"));
         tUser.setUAge((Integer) params.get("uAge"));
         tUser.setUSex((String) params.get("uSex"));
-        tUser.setUUsername((String) params.get("uUsername"));
+        tUser.setUUserName((String) params.get("uUsername"));
         return itUserService.insertInto(tUser);
     }
     @PostMapping("add")

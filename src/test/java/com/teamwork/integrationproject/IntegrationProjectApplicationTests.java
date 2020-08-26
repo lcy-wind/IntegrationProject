@@ -1,6 +1,7 @@
 package com.teamwork.integrationproject;
 
 import com.teamwork.integrationproject.common.props.ApiProperties;
+import com.teamwork.integrationproject.common.snowflake.SnowFlake;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -36,6 +37,10 @@ class IntegrationProjectApplicationTests
     @Test
     void test()
     {
+        for (int i = 0; i < 10; i++)
+        {
+            System.out.println(SnowFlake.instant().nextId());
+        }
 //        User user = itUserService.(1);
 //        System.out.println(user.toString());
     }
