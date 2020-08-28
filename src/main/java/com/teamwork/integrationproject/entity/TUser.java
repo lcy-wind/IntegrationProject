@@ -27,8 +27,8 @@ import org.springframework.stereotype.Component;
 @Data
 //@EqualsAndHashCode(callSuper = false)
 //@Accessors(chain = true)
-//@AllArgsConstructor
-//@NoArgsConstructor
+@AllArgsConstructor
+@NoArgsConstructor
 @TableName("t_user")
 public class TUser implements Serializable {
 

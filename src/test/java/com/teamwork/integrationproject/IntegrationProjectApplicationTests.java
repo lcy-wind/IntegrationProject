@@ -1,7 +1,10 @@
 package com.teamwork.integrationproject;
 
+import com.alibaba.fastjson.JSONObject;
 import com.teamwork.integrationproject.common.props.ApiProperties;
-import com.teamwork.integrationproject.common.snowflake.SnowFlake;
+import com.teamwork.integrationproject.entity.Student;
+import com.teamwork.integrationproject.mapper.StudentMapper;
+import com.teamwork.integrationproject.mapper.TUserMapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -16,8 +19,8 @@ class IntegrationProjectApplicationTests
     @Autowired
     private DataSource dataSource;
 
-//    @Autowired
-//    private ITUserService itUserService;
+    @Autowired
+    private TUserMapper userMapper;
 
     @Autowired
     private ApiProperties properties;
@@ -34,15 +37,16 @@ class IntegrationProjectApplicationTests
         System.out.println(properties.getName());
     }
 
+    @Autowired
+    private StudentMapper studentMapper;
     @Test
     void test()
     {
-        for (int i = 0; i < 10; i++)
-        {
-            System.out.println(SnowFlake.instant().nextId());
-        }
-//        User user = itUserService.(1);
-//        System.out.println(user.toString());
+        Student student1 = new Student();
+        student1.setTeacher("王大咪");
+        Student student = studentMapper.selectStudent(student1);
+        System.out.println(JSONObject.toJSONString(student));
     }
+
 
 }

@@ -6,9 +6,6 @@ server:
 spring:
   application:
     name: project
-mybatis-plus:
-  configuration:
-    map-underscore-to-camel-case: true
 ##日志
 #logging:
 #  file: /app/pms/log/contract/${spring.application.name}.log
@@ -17,3 +14,4 @@ mybatis-plus:
 #    root: error
 #    com:
 #      infoepoch: debug
+
