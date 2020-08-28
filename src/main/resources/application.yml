@@ -6,12 +6,11 @@ server:
 spring:
   application:
     name: project
-##日志
-#logging:
-#  file: /app/pms/log/contract/${spring.application.name}.log
-#  #TRACE < DEBUG < INFO < WARN < ERROR < FATAL
-#  level:
-#    root: error
-#    com:
-#      infoepoch: debug
-
+#日志
+logging:
+  file:
+    path: /app/teamwork/log/project/${spring.application.name}.log
+  level:
+    root: error
+    com:
+      teamwork: debug

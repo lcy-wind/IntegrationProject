@@ -5,6 +5,7 @@ import com.teamwork.integrationproject.common.props.ApiProperties;
 import com.teamwork.integrationproject.entity.Student;
 import com.teamwork.integrationproject.mapper.StudentMapper;
 import com.teamwork.integrationproject.mapper.TUserMapper;
+import com.teamwork.integrationproject.utils.LogHelper;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -42,10 +43,12 @@ class IntegrationProjectApplicationTests
     @Test
     void test()
     {
-        Student student1 = new Student();
-        student1.setTeacher("王大咪");
-        Student student = studentMapper.selectStudent(student1);
-        System.out.println(JSONObject.toJSONString(student));
+//        Student student1 = new Student();
+//        student1.setTeacher("王大咪");
+//        Student student = studentMapper.selectStudent(student1);
+//        System.out.println(JSONObject.toJSONString(student));
+
+        LogHelper.info(this,"kkkkkkk");
     }
 
 
