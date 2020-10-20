@@ -12,6 +12,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import javax.sql.DataSource;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @SpringBootTest
 class IntegrationProjectApplicationTests
@@ -41,14 +44,19 @@ class IntegrationProjectApplicationTests
     @Autowired
     private StudentMapper studentMapper;
     @Test
-    void test()
+    void TestStudent()
     {
-//        Student student1 = new Student();
-//        student1.setTeacher("王大咪");
-//        Student student = studentMapper.selectStudent(student1);
-//        System.out.println(JSONObject.toJSONString(student));
+        Student student1 = new Student();
+        student1.setTeacher("王大咪");
+        Student student = studentMapper.selectStudent(student1);
+        System.out.println(JSONObject.toJSONString(student));
 
         LogHelper.info(this,"kkkkkkk");
+    }
+
+    @Test
+    public void test()
+    {
     }
 
 

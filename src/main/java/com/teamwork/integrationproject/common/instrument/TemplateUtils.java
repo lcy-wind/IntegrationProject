@@ -14,7 +14,7 @@ import java.util.Map;
 public class TemplateUtils
 {
 
-    //引用此注解必须要进行bean配置否则报错   在config  进行bean配置
+    //注入restTemple必须要进行bean配置否则报错   在config  进行bean配置
     @Autowired
     private RestTemplate restTemplate;
 
