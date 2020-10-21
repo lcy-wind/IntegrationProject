@@ -1,8 +1,8 @@
 package com.teamwork.integrationproject.controller;
 
+import com.teamwork.integrationproject.dto.GenericTypeResponse;
 import com.teamwork.integrationproject.entity.Student;
 import com.teamwork.integrationproject.service.StudentService;
-import com.teamwork.integrationproject.utils.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,11 +23,9 @@ public class StudentController
 
     //页面数据查询
     @PostMapping("/selectStudentList")
-    public Result selectStudentList() {
-        Result result = new Result();
+    public GenericTypeResponse selectStudentList() {
         List<Student> students = studentService.selectStudentList();
-        result.setData(students);
-        return result;
+        return new GenericTypeResponse(students);
     }
 
 }

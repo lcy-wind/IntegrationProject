@@ -5,7 +5,6 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.teamwork.integrationproject.entity.Student;
 import com.teamwork.integrationproject.mapper.StudentMapper;
 import com.teamwork.integrationproject.service.StudentService;
-import com.teamwork.integrationproject.utils.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

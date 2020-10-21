@@ -1,4 +1,4 @@
-package com.teamwork.integrationproject.common.snowflake;
+package com.teamwork.integrationproject.utils.snowflake;
 
 import org.springframework.beans.factory.annotation.Value;
 

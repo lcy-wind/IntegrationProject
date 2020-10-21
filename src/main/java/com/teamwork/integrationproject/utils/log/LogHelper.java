@@ -1,8 +1,10 @@
-package com.teamwork.integrationproject.utils;
+package com.teamwork.integrationproject.utils.log;
 
 import org.slf4j.LoggerFactory;
 
-
+/**
+ * 日志打印
+ */
 public class LogHelper
 {
     public static void debug(Object context, String s)

@@ -1,6 +1,6 @@
-package com.teamwork.integrationproject.utils;
+package com.teamwork.integrationproject.dto;
 
-import com.teamwork.integrationproject.common.resposnse.BaseResponse;
+import com.teamwork.integrationproject.utils.resposnse.BaseResponse;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

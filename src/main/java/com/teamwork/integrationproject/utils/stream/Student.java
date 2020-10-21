@@ -1,4 +1,4 @@
-package com.teamwork.integrationproject.utils;
+package com.teamwork.integrationproject.utils.stream;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

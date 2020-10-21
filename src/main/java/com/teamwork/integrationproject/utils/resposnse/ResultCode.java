@@ -1,4 +1,4 @@
-package com.teamwork.integrationproject.common.resposnse;
+package com.teamwork.integrationproject.utils.resposnse;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
