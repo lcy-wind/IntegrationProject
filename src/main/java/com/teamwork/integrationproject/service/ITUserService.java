@@ -19,7 +19,7 @@ import java.util.List;
 
 public interface ITUserService extends IService<TUser> {
 
-    Result insertInto (TUser tUser);
+    void insertInto (TUser tUser);
 
     List<TUser> qryList();
 }

@@ -39,14 +39,14 @@ public class TUserController {
      * 单个新增接口
      */
     @PostMapping("addOne")
-    public Result addOne(@RequestBody Map<String, Object> params){
+    public void addOne(@RequestBody Map<String, Object> params){
         System.out.println(params);
         TUser tUser = new TUser();
         tUser.setUId((Integer) params.get("uId"));
         tUser.setUAge((Integer) params.get("uAge"));
         tUser.setUSex((String) params.get("uSex"));
         tUser.setUUserName((String) params.get("uUsername"));
-        return itUserService.insertInto(tUser);
+        itUserService.insertInto(tUser);
     }
     @PostMapping("add")
     public Result addOne(@RequestBody TUser tUser){
@@ -58,6 +58,6 @@ public class TUserController {
     public Result qryList(){
         List<TUser> tUsers = itUserService.qryList();
 //        return itUserService.insertInto(tUser);
-        return Result.success(tUsers);
+        return new Result(tUsers);
     }
 }

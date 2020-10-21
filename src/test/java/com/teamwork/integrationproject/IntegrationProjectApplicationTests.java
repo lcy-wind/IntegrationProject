@@ -47,7 +47,7 @@ class IntegrationProjectApplicationTests
     void TestStudent()
     {
         Student student1 = new Student();
-        student1.setTeacher("王大咪");
+//        student1.setSTeacher("王大咪");
         Student student = studentMapper.selectStudent(student1);
         System.out.println(JSONObject.toJSONString(student));
 
@@ -57,6 +57,8 @@ class IntegrationProjectApplicationTests
     @Test
     public void test()
     {
+        List<Student> students = studentMapper.selectList(null);
+        System.out.println(students+"ssss");
     }
 
 

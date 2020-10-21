@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>表格分页示例</title>
+    <link rel="stylesheet" href="../../asset/css/common.css">
+    <link rel="stylesheet" href="../../asset/libs/prism.js-1.17.1/prism_light.css">
+    <!--辅助: 代码高亮样式, 正式页面不需要引用-->
+    <style>
+        .block_container_table tr {
+            height: auto;
+        }
+
+        .block_container_table th,
+        .block_container_table td {
+            line-height: 20px;
+            padding: 8px;
+            border-right: 1px solid #ddd;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div id="app" class="warpper" v-cloak>
+        <div class="header">
+            <ul>
+                <li class="home"><a href="#"><img src="../../asset/images/icon-home.png" alt="回到首页"></a></li>
+                <li>|</li>
+                <li>表格分页示例</li>
+            </ul>
+        </div>
+        <div class="block_container">
+            <div class="title">
+                表格分页示例
+            </div>
+            <div class="content">
+                <table class="table_list table_striped table_hover">
+                    <thead>
+                        <tr>
+                            <th>index</th>
+                            <th>value</th>
+                            <th>date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr v-for="(item, index) in dataList">
+                            <td class="text-center">{{index}}</td>
+                            <td class="text-center">{{item.value}}</td>
+                            <td>{{item.date}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <pagination :total-count="totalCount" @page-change="bindTable" ref="pag"></pagination>
+            </div>
+        </div>
+
+        <div class="block_container">
+            <div class="title">组件说明</div>
+            <div class="content language-html">
+                <code>&lt;pagination>&lt;/pagination></code>
+                <br><br>
+                <table class="table_list table_striped table_hover">
+                    <thead>
+                        <tr>
+                            <th>属性</th>
+                            <th>说明</th>
+                            <th>类型</th>
+                            <th>必填</th>
+                            <th>不传时默认值</th>
+                            <th>自动检测父页面值变化</th>
+                            <th>支持.sync</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="text-nowrap">:total-count</td>
+                            <td>记录总数</td>
+                            <td>整数</td>
+                            <td>是</td>
+                            <td>无</td>
+                            <td>是</td>
+                            <td>否</td>
+                        </tr>
+                        <tr>
+                            <td class="text-nowrap">:page-size</td>
+                            <td>每页显示记录数，传入的pageSize不在默认选项中会自动添加，默认选项为：10/20/30/50</td>
+                            <td>整数</td>
+                            <td>否</td>
+                            <td>20</td>
+                            <td>是</td>
+                            <td>否</td>
+                        </tr>
+                        <tr>
+                            <td class="text-nowrap">:page-index</td>
+                            <td>当前页码</td>
+                            <td>整数</td>
+                            <td>否</td>
+                            <td>1</td>
+                            <td>是</td>
+                            <td>否</td>
+                        </tr>
+                        <tr>
+                            <td class="text-nowrap">:range-count</td>
+                            <td>页码按钮数量，0为不显示页码按钮</td>
+                            <td>整数</td>
+                            <td>否</td>
+                            <td>7</td>
+                            <td>是</td>
+                            <td>否</td>
+                        </tr>
+                        <tr>
+                            <td class="text-nowrap">:show-info</td>
+                            <td>是否显示分页信息，由于每页显示选择框包含在分页信息区域，不显示分页信息时将同时隐藏选择框</td>
+                            <td>布尔值</td>
+                            <td>否</td>
+                            <td>true</td>
+                            <td>是</td>
+                            <td>否</td>
+                        </tr>
+                        <tr>
+                            <td class="text-nowrap">:size-select</td>
+                            <td>是否显示每页显示数选择框</td>
+                            <td>布尔值</td>
+                            <td>否</td>
+                            <td>true</td>
+                            <td>是</td>
+                            <td>否</td>
+                        </tr>
+                        <tr>
+                            <td class="text-nowrap">:manual-input</td>
+                            <td>是否显示页码输入框</td>
+                            <td>布尔值</td>
+                            <td>否</td>
+                            <td>true</td>
+                            <td>是</td>
+                            <td>否</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <table class="table_list table_striped table_hover">
+                    <thead>
+                        <tr>
+                            <th>事件</th>
+                            <th>说明</th>
+                            <th>参数</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="text-nowrap">@page-change</td>
+                            <td>切换页码和每页记录数时回调方法</td>
+                            <td>pageIndex：当前页码，pageSize：每页记录数</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <table class="table_list table_striped table_hover">
+                    <thead>
+                        <tr>
+                            <th>方法</th>
+                            <th>说明</th>
+                            <th>参数</th>
+                            <th>返回值</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="text-nowrap">getPageIndex()</td>
+                            <td>获取分页组件的当前页码，从1开始</td>
+                            <td>无</td>
+                            <td>整数</td>
+                        </tr>
+                        <tr>
+                            <td class="text-nowrap">getPageSize()</td>
+                            <td>获取分页组件的每页显示数</td>
+                            <td>无</td>
+                            <td>整数</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <pre><code class="language-js">为分页组件设置 ref="xxx"，可以通过this.$refs.xxx.getPageIndex()和this.$refs.xxx.getPageSize()获取组件的参数值。<br>
+    页面加载后初次获取必须在Vue的mounted方法中，可以省去为控件指定pageIndex和pageSize属性，详情参考本页面代码。</code></pre>
+            </div>
+        </div>
+
+        <div class="block_container">
+            <div class="title">更多示例</div>
+            <div class="content language-js">
+                <p><code>指定了pageSize=15和pageIndex=2：</code></p>
+                <pagination :total-count="totalCount" :page-size="15" :page-index="2" @page-change="pageChange">
+                </pagination>
+                <p><code>不显示分页信息：</code></p>
+                <pagination :total-count="totalCount" :show-info="false" @page-change="pageChange"></pagination>
+                <p><code>不显示手工输入页码和每页显示数选择框，显示3个导航按钮：</code></p>
+                <pagination :total-count="totalCount" :size-select="false" :manual-input="false" :range-count="3"
+                    @page-change="pageChange"></pagination>
+                <p><code>分页联动，可用于在页面不同区域需要多个分页组件的场景：</code></p>
+                <pagination :total-count="totalCount" :page-size="pageSize" :page-index="pageIndex"
+                    @page-change="pageChangeRelated"></pagination>
+                <pagination :total-count="totalCount" :page-size="pageSize" :page-index="pageIndex"
+                    @page-change="pageChangeRelated"></pagination>
+            </div>
+
+        </div>
+
+    </div>
+
+    <script type="text/javascript" src="../../asset/libs/prism.js-1.17.1/prism.js"></script>
+    <!--辅助: 代码高亮, 正式页面不需要引用-->
+    <script type="text/javascript" src="../../asset/libs/require.js-2.3.6/require.min.js"></script>
+    <script type="text/javascript" src="../../asset/js/require-config.js"></script>
+    <script type="text/javascript">
+        require(['jquery', 'vue', 'global'], function ($, Vue) {
+            var app = new Vue({
+                el: '#app',
+                data: {
+                    dataList: [],
+                    totalCount: undefined,
+                    pageSize: undefined, //不需要联动时无需添加此参数，直接设置分页组件属性即可
+                    pageIndex: undefined //不需要联动时无需添加此参数，直接设置分页组件属性即可
+                },
+                created: function () {
+
+                },
+                mounted: function () {
+                    //获取分页组件值的pageIndex和pageSize，页面加载后初次获取必须在mounted方法中
+                    this.bindTable(this.$refs.pag.getPageIndex(), this.$refs.pag.getPageSize());
+                },
+                methods: {
+                    bindTable: function (pageIndex, pageSize) {
+                        var that = this;
+                        $.ajax({
+                            type: 'GET',
+                            url: '../json/ajax-success-sample.json',
+                            //data: {pageIndex: pageIndex, pageSize: pageSize},
+                            success: function (data) {
+                                //创建测试数据
+                                var totalCount = 111;
+                                var a = [];
+                                for (var n = 0; n < totalCount; n++)
+                                    a[n] = {
+                                        value: n + 1,
+                                        date: new Date()
+                                    };
+
+                                that.totalCount = totalCount;
+                                //取当前页数据
+                                //console.log((pageIndex - 1) * pageSize);
+                                //console.log(pageIndex * pageSize);
+                                that.dataList = a.slice((pageIndex - 1) * pageSize,
+                                    pageIndex * pageSize);
+                                //console.log(that.dataList);
+                            }
+                        });
+                    },
+                    pageChange: function (pageIndex, pageSize) {
+                        console.log("触发了回调方法pageChange：pageIndex=" + pageIndex + ",pageSize=" +
+                            pageSize);
+                    },
+                    pageChangeRelated: function (pageIndex, pageSize) {
+                        this.pageIndex = pageIndex; //同步组件参数，实现联动
+                        this.pageSize = pageSize; //同步组件参数，实现联动
+                        console.log("触发回调方法pageChangeRelated：pageIndex=" + pageIndex +
+                            ",pageSize=" + pageSize);
+                    }
+                }
+            })
+        });
+    </script>
+</body>
+
+</html>

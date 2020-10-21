@@ -9,8 +9,13 @@ import lombok.Data;
 public class Student
 {
     @TableField(value = "s_id")
-    private Integer id;
-    @TableField(value = "s_teacher")
-    private String teacher;
+    private Integer sId;
+    @TableField(value = "s_name")
+    private String name;
+    @TableField(value = "s_age")
+    private Integer age;
+    @TableField(value = "s_grade")
+    private String grade;
+
 
 }

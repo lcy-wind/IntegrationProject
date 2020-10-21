@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>项目经理首页</title>
+    <link rel="stylesheet" type="text/css" href="../../asset/css/common.css" />
+</head>
+
+<body>
+    <div id="app" class="warpper" v-cloak>
+        <div class="header">
+            <ul>
+                <li class="home"><a href="#"><img src="../../asset/images/icon-home.png" alt="回到首页"></a></li>
+                <li>|</li>
+                <li>创建项目</li>
+            </ul>
+        </div>
+        <div class="block_container">
+            <div class="remark_container">
+                <ul>
+                    <li>1、当项目导入MIS后，“MIS项目名称”、“项目编码”、“项目类型”、“项目开始时间”将不能修改。</li>
+                    <li>2、导入MIS提示“创建人不存在”或“制单人不存在”，请点击<a href="用户权限变更申请操作指导V2.0.docx"
+                            style="color:red">这里</a>下载操作文档在ERP系统进行权限变更</li>
+                </ul>
+            </div>
+            <div class="content">
+                <table class="table_layout_edit">
+                    <tr>
+                        <td class="required"><i class="table_xx">*</i>项目名称</td>
+                        <td><input type="text" class="form_control"></td>
+                        <td class="required"><i class="table_xx">*</i>工程管理专业 <br><span class="word_aux">（此选项会影响后续流程，请正确选择）</span></td>
+                        <td>
+                            <select type="text" class="form_control">
+                                <option value="101">无线_宏站主设备</option>
+                                <option value="102">无线_室分主设备</option>
+                                <option value="2">无线_宏站配套</option>
+                                <option value="11">无线_室分配套</option>
+                                <option value="12">无线_搬迁</option>
+                                <option value="13">无线_WLAN</option>
+                                <option value="14">无线_网优</option>
+                                <option value="17">无线_机房</option>
+                                <option value="18">无线_铁塔</option>
+                                <option value="181">无线_铁塔塔基</option>
+                                <option value="3">传输_个人有线宽带</option>
+                                <option value="4">传输_线路</option>
+                                <option value="40">传输_设备</option>
+                                <option value="43">传输_管道</option>
+                                <option value="41">传输_本地传送网_购置管道</option>
+                                <option value="42">传输_本地传送网_购置节点机房</option>
+                                <option value="5">传输_集团客户接入</option>
+                                <option value="15">传输_省传输线路</option>
+                                <option value="151">传输_省传输设备</option>
+                                <option value="152">传输_省传输管道</option>
+                                <option value="6">业务网_业务网</option>
+                                <option value="61">业务网_支撑网</option>
+                                <option value="62">业务网_机房配套</option>
+                                <option value="8">基建_基建投资类</option>
+                                <option value="9">基建_基建成本类</option>
+                                <option value="7">交换_交换</option>
+                                <option value="71">交换_机房配套</option>
+                                <option value="72">交换_城域网</option>
+                                <option value="10">零星购置</option>
+                                <option value="16">集团ICT</option>
+                                <option value="25">研发类</option>
+                                <option value="26">软件类_客服</option>
+                                <option value="27">软件类_IT</option>
+                                <option value="28">软件类_网络</option>
+                                <option value="29">无线_小基站主设备</option>
+                                <option value="30">无线_小基站配套</option>
+                                <option value="36">其他_节能减排</option>
+                                <option value="37">无线_4G一体化皮站</option>
+                                <option value="50">投资类项目</option>
+                                <option value="0">未选择</option>
+                            </select>
+
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td class="required">导入MIS名称 <br><span class="word_aux">（如空将自动截取项目名称前60个字）</span></td>
+                        <td><input type="text" class="form_control"></td>
+                        <td class="required"><i class="table_xx">*</i>立项、主管单位</td>
+                        <td>
+                            <select type="text" class="form_control">
+                                <option selected value="">省本部</option>
+                                <option value="0">集团公司</option>
+                                <option value="1">市管</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="required"><i class="table_xx">*</i>项目编码</td>
+                        <td><input type="text" class="form_control"></td>
+                        <td class="required">自定义类别</td>
+                        <td><input type="text" class="form_control"></td>
+                    </tr>
+                    <tr>
+                        <td class="required"><i class="table_xx">*</i>项目类型</td>
+                        <td>
+                            <select type="text" class="form_control">
+                                <option selected="selected" value="">请选择...</option>
+                                <option value="1">移动通信网</option>
+                                <option value="2">业务网</option>
+                                <option value="3">传输网</option>
+                                <option value="4">支撑网</option>
+                                <option value="5">局房土建及动力配套</option>
+                                <option value="6">其他</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="required"><i class="table_xx">*</i>项目开始时间</td>
+                        <td>
+                            <date-picker v-model="startTime"></date-picker>
+                        </td>
+                        <td class="required">计划完成时间</td>
+                        <td>
+                            <datetime-picker v-model="endTime" placeholder="选择日期时间"></datetime-picker>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="vertical_init">建设单位</td>
+                        <td colspan="3">
+                            <div class="checkbox" style="margin-top:0">
+                                <label>
+                                    <input type="checkbox" value="value1"> 全选
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" value="value1"> 省本部
+                                </label>
+                                <label>
+                                    <input type="checkbox" value="value2"> 苏州分公司
+                                </label>
+                                <label>
+                                    <input type="checkbox" value="value3"> 南京分公司
+                                </label>
+                                <label>
+                                    <input type="checkbox" value="value1"> 省本部
+                                </label>
+                                <label>
+                                    <input type="checkbox" value="value2"> 苏州分公司
+                                </label>
+                                <label>
+                                    <input type="checkbox" value="value3"> 南京分公司
+                                </label>
+                                </label>
+                                <br>
+                                <label>
+                                    <input type="checkbox" value="value1"> 省本部
+                                </label>
+                                <label>
+                                    <input type="checkbox" value="value2"> 苏州分公司
+                                </label>
+                                <label>
+                                    <input type="checkbox" value="value3"> 南京分公司
+                                </label>
+                                <label>
+                                    <input type="checkbox" value="value1"> 省本部
+                                </label>
+                                <label>
+                                    <input type="checkbox" value="value2"> 苏州分公司
+                                </label>
+                                <label>
+                                    <input type="checkbox" value="value3"> 南京分公司
+                                </label>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="vertical_init">项目描述 <br><span class="word_aux">（导入MIS时将自动截取前120个字）</span></td>
+                        <td><textarea class="form_control" rows="5" cols="30"></textarea></td>
+                        <td class="vertical_init">备注</td>
+                        <td><textarea class="form_control" rows="5" cols="30"></textarea></td>
+                    </tr>
+
+                    <tr>
+                        <td class="required"><i class="table_xx">*</i>项目负责人</td>
+                        <td>
+                            <div class="input_group">
+                                <input type="text" class="form_control">
+                                <span class="input_group_addon"><i class="icon_people"></i></span>
+                            </div>
+                        </td>
+                        <td class="required">其他负责人</td>
+                        <td>
+                            <div class="input_group">
+                                <input type="text" class="form_control">
+                                <span class="input_group_addon"><i class="icon_people"></i></span>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="required"><i class="table_xx">*</i>项目子类型</td>
+                        <td>
+                            <select type="text" class="form_control">
+                                <option selected="selected" value="">请选择...</option>
+                                <option value="1">移动通信网</option>
+                                <option value="2">业务网</option>
+                                <option value="3">传输网</option>
+                                <option value="4">支撑网</option>
+                                <option value="5">局房土建及动力配套</option>
+                                <option value="6">其他</option>
+                            </select>
+                        </td>
+                        <td class="required"><i class="table_xx">*</i>动产属性</td>
+                        <td>
+                            <select type="text" class="form_control">
+                                <option selected="selected" value="">动产</option>
+                                <option selected="selected" value="">不动产</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="required">业务平台类别</td>
+                        <td>
+                            <select type="text" class="form_control">
+                                <option selected="selected" value="N/A">N/A</option>
+                                <option value="OPE-D">数据业务平台</option>
+                                <option value="OPE-V">语音业务平台</option>
+                                <option value="OPE-I">IMS专用业务平台</option>
+                                <option value="OPE-C">集团客户业务平台</option>
+                            </select>
+                        </td>
+                        <td class="required">业务平台</td>
+                        <td>
+                            <select type="text" class="form_control">
+                                <option selected="selected" value="">N/A</option>
+
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="required">网络层次</td>
+                        <td>
+                            <select type="text" class="form_control">
+                                <option selected="selected" value="">请选择...</option>
+                                <option value="1">移动通信网</option>
+                                <option value="2">业务网</option>
+                                <option value="3">传输网</option>
+                                <option value="4">支撑网</option>
+                                <option value="5">局房土建及动力配套</option>
+                                <option value="6">其他</option>
+                            </select>
+                        </td>
+                        <td class="required">是否共建设备</td>
+                        <td>
+                            <select type="text" class="form_control">
+                                <option selected="selected" value="不共建">不共建</option>
+                                <option value="与联通共建">与联通共建</option>
+                                <option value="与电信共建">与电信共建</option>
+                                <option value="与铁通共建">与铁通共建</option>
+                                <option value="与联通电信共建">与联通电信共建</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <!--<tr>
+                        <td><button type="button" class="btn btn_save">保存</button></td>
+                    </tr>-->
+                </table>
+                <div class="button_group">
+                    <button type="button" class="btn btn_save">保存</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="../../asset/libs/require.js-2.3.6/require.min.js"></script>
+    <script type="text/javascript" src="../../asset/js/require-config.js"></script>
+    <script>
+        require(['jquery', 'vue', 'global'], function ($, Vue) {
+            var vm = new Vue({
+                el: "#app",
+                data: function () {
+                    return {
+                        startTime: '', // 开始日期
+                        endTime: '', // 结束日期
+                    }
+                },
+                mounted: function () {
+
+                }
+            })
+        });
+    </script>
+</body>
+
+</html>

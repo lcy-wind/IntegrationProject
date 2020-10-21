@@ -1,0 +1,249 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <title></title>
+    <link rel="stylesheet" href="../../asset/css/common.css">
+    <link rel="stylesheet" href="../../asset/libs/prism.js-1.17.1/prism_light.css"><!--辅助: 代码高亮样式, 正式页面不需要引用-->
+</head>
+<body>
+    <div id="app" class="warpper" v-cloak>
+        <div class="header">
+            <ul>
+                <li class="home"><a href="#"><img src="../../asset/images/icon-home.png" alt="回到首页"></a></li>
+                <li>|</li>
+                <li>CheckBoxSelect，CheckBoxSelect组件示例</li>
+            </ul>
+        </div>
+        <div class="block_container">
+            <div class="title">
+            CheckBoxSelect，CheckBoxSelect组件示例
+        </div>
+        <div class="content">
+        <div >
+            <label>CheckboxSelect1，绑定list-data</label>
+            <checkbox-select :list-data="listData" v-model="checkedValue1"></checkbox-select>
+            <span class="help-block">value={{checkedValue1}}</span>
+        </div>
+        <br>
+        <div>
+            <label>CheckboxSelect2，绑定自定义的list-data（{'id' : '' ,'name' : ''}），指定value-prop="id"text-prop="name"</label>
+            <checkbox-select :list-data="customData" v-model="checkedValue2" value-prop="id" text-prop="name"></checkbox-select>
+            <span class="help-block">value={{checkedValue2}}</span>
+        </div>
+        <br>
+        <div>
+            <label>CheckboxSelect3，绑定object-data，有回调方法</label>
+            <checkbox-select :object-data="objectData" v-model="checkedValue3" @selected-change="selectedChange"></checkbox-select>
+            <span class="help-block">value={{checkedValue3}}</span>
+        </div>
+        <br>
+        <div >
+            <label>CheckboxSelect4，绑定list-url</label>
+            <checkbox-select list-url="../json/data-text-value-sample.json"></checkbox-select>
+        </div>
+        <br>
+        <div>
+            <label>CheckboxSelect5，绑定object-url</label>
+            <checkbox-select object-url="../json/data-dict-sample.json"></checkbox-select>
+        </div>
+    </div>
+    </div>
+    <div class="block_container">
+        <div class="title">
+            CheckBoxSelect，CheckBoxSelect组件说明
+        </div>
+        <div class="content">
+        <code>&lt;checkbox-select&gt;&lt;/checkbox-select&gt;</code>
+        <br><br>
+        <table class="table_list table_striped table_striped">
+            <thead>
+            <tr>
+                <th>属性</th>
+                <th>说明</th>
+                <th>类型</th>
+                <th>必填</th>
+                <th>不传时默认值</th>
+                <th>自动检测父页面值变化</th>
+                <th>支持.sync</th>
+            </tr>
+            </thead>
+            <tr>
+                <td class="text-nowrap">v-model</td>
+                <td>组件值</td>
+                <td>数组</td>
+                <td>否，不传时只能过用getSelectedValue方法获取值</td>
+                <td>[]</td>
+                <td>是</td>
+                <td>否</td>
+            </tr>
+            <tr>
+                <td class="text-nowrap">:list-data</td>
+                <td>选项数据，格式为：[ {'value': '1', 'text': 'text1'}, {'value': '2', 'text': 'text2'}, {'value': '3', 'text': 'text3'} ]的数组，会按数组元素顺序显示</td>
+                <td>数组</td>
+                <td>否</td>
+                <td>undefined</td>
+                <td>是</td>
+                <td>否</td>
+            </tr>
+            <tr>
+                <td class="text-nowrap">list-url</td>
+                <td>获取选项数据的url，返回值按result规范，data中包含数据，格式同list-data</td>
+                <td>字符串</td>
+                <td>否</td>
+                <td>undefined</td>
+                <td>否</td>
+                <td>否</td>
+            </tr>
+            <tr>
+                <td class="text-nowrap">value-prop</td>
+                <td>当数据源为list-data或list-url时，指定对象的某个属性做为value</td>
+                <td>字符串</td>
+                <td>否</td>
+                <td>'value'</td>
+                <td>是</td>
+                <td>否</td>
+            </tr>
+            <tr>
+                <td class="text-nowrap">text-prop</td>
+                <td>当数据源为list-data或list-url时，指定对象的某个属性做为text</td>
+                <td>字符串</td>
+                <td>否</td>
+                <td>'text'</td>
+                <td>是</td>
+                <td>否</td>
+            </tr>
+            <tr>
+                <td class="text-nowrap">:object-data</td>
+                <td>选项数据，格式为：{'1': 'text1', '2': 'text2', '3': 'text3'}的对象，会按key顺序显示</td>
+                <td>对象</td>
+                <td>否</td>
+                <td>undefined</td>
+                <td>是</td>
+                <td>否</td>
+            </tr>
+            <tr>
+                <td class="text-nowrap">object-url</td>
+                <td>获取选项数据的url，返回值按result规范，data中包含数据，格式同object-data</td>
+                <td>字符串</td>
+                <td>否</td>
+                <td>undefined</td>
+                <td>否</td>
+                <td>否</td>
+            </tr>
+            <tr>
+                <td colspan="7">第一次加载时数据优先级为：list-data > list-url > object-data > object-url</td>
+            </tr>
+            <tr>
+                <td class="text-nowrap">text-separator</td>
+                <td>选中项文本分隔符</td>
+                <td>字符串</td>
+                <td>否</td>
+                <td>，</td>
+                <td>是</td>
+                <td>否</td>
+            </tr>
+            <tr>
+                <td class="text-nowrap">disabled</td>
+                <td>禁用</td>
+                <td>布尔值</td>
+                <td>否</td>
+                <td>false</td>
+                <td>是</td>
+                <td>否</td>
+            </tr>
+            <tr>
+                <td class="text-nowrap">placeholder</td>
+                <td>占位符</td>
+                <td>字符串</td>
+                <td>否</td>
+                <td>''</td>
+                <td>是</td>
+                <td>否</td>
+            </tr>
+        </table>
+        <table class="table_list">
+            <thead>
+            <tr>
+                <th>事件</th>
+                <th>说明</th>
+                <th>参数</th>
+            </tr>
+            </thead>
+            <tr>
+                <td class="text-nowrap">@selected-change</td>
+                <td>选择项发生变化时回调方法</td>
+                <td>value：选中项值，数组</td>
+            </tr>
+        </table>
+        <table class="table_list table_striped table_hover">
+            <thead>
+            <tr>
+                <th>方法</th>
+                <th>说明</th>
+                <th>参数</th>
+                <th>返回值</th>
+            </tr>
+            </thead>
+            <tr>
+                <td class="text-nowrap">getSelectedValue()</td>
+                <td>获取选中项值</td>
+                <td>无</td>
+                <td>字符串数组</td>
+            </tr>
+            <tr>
+                <td class="text-nowrap">getSelectedText()</td>
+                <td>获取选中项的文本</td>
+                <td>无</td>
+                <td>字符串数组</td>
+            </tr>
+        </table>
+    </div>
+</div>
+</div>
+<script type="text/javascript" src="../../asset/libs/require.js-2.3.6/require.min.js"></script>
+<script type="text/javascript" src="../../asset/js/require-config.js"></script>
+<script type="text/javascript" src="../../asset/libs/prism.js-1.17.1/prism.js"></script><!--辅助: 代码高亮, 正式页面不需要引用-->
+
+<script type="text/javascript">
+    require(['jquery', 'vue', 'global', 'static/demos/example/component-checkbox-list'], function ($, Vue) {
+        var app = new Vue({
+            el: '#app',
+            data: function () {
+                return {
+                    listData: [
+                        {'value': '1', 'text': 'text1'},
+                        {'value': '3', 'text': 'text3'},
+                        {'value': '2', 'text': 'text2'}
+                    ],
+                    customData: [
+                        {'id': '1', 'name': 'name1'},
+                        {'id': '3', 'name': 'name2'},
+                        {'id': '2', 'name': 'name3'}
+                    ],
+                    objectData: {'1': 'text1', '3': 'text3', '2': 'text2'},
+                    checkedValue1: ['2'],
+                    checkedValue2: [],
+                    checkedValue3: []
+                }
+            },
+            created: function () {
+                /*for(var i = 0; i < 100; i++){
+                    this.listData.push({'value': i, 'text': 'text' + i});
+                }*/
+            },
+            methods: {
+                selectedChange: function (value) {
+                    console.log('触发了selectedChange回调方法：' + value);
+                }
+            }
+        });
+    });
+</script>
+
+</body>
+
+</html>

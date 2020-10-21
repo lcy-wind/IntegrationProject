@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>省略过长字段</title>
+    <link rel="stylesheet" href="../../asset/css/common.css">
+    <link rel="stylesheet" href="../../asset/libs/prism.js-1.17.1/prism_light.css">
+    <!--辅助: 代码高亮样式, 正式页面不需要引用-->
+</head>
+
+<body>
+    <div id="app" class="warpper" v-cloak>
+        <div class="header">
+            <ul>
+                <li class="home"><a href="#"><img src="../../asset/images/icon-home.png" alt="回到首页"></a></li>
+                <li>|</li>
+                <li>省略过长字段</li>
+            </ul>
+        </div>
+        <div class="block_container">
+            <div class="title">
+                省略过长字段
+            </div>
+            <div class="content">
+                <table class="table_list table_hover table_striped">
+                    <thead>
+                        <tr>
+                            <th>计划名称</th>
+                            <th>预估金额（元）</th>
+                            <th>采购方式</th>
+                            <th>采购频率</th>
+                            <th>时间偏差</th>
+                            <th>预估时间</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tr v-for="(item, index) in dataList">
+                        <td style="width: 300px;">
+                            <p v-ellipsis="300">{{item.name}}</p>
+                        </td>
+                        <td>{{item.estimatedAmount}}</td>
+                        <td>{{methods[item.method]}}</td>
+                        <td>{{item.frequency}}</td>
+                        <td>{{item.timeDeviation}}</td>
+                        <td>{{item.estimatedTime}}</td>
+                        <td class="nowrap text_center">
+                            <i title="查看" class="icon_check"></i>
+                            <i title="编辑" class="icon_edit"></i>
+                            <i title="删除" class="icon_delete"></i>
+                        </td>
+                    </tr>
+                </table>
+                <div class="sy_group">
+                    <p>
+                        指令:<br>
+                        默认不加宽度 <code>v-ellipsis</code><br>
+                        自定义宽度 <code>v-ellipsis="宽度值"</code>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="../../asset/libs/require.js-2.3.6/require.min.js"></script>
+    <script type="text/javascript" src="../../asset/js/require-config.js"></script>
+    <script type="text/javascript" src="../../asset/libs/prism.js-1.17.1/prism.js"></script>
+    <!--辅助: 代码高亮, 正式页面不需要引用-->
+    <script type="text/javascript">
+        require(['jquery', 'vue', 'global'], function ($, Vue) {
+            var app = new Vue({
+                el: '#app',
+                data: {
+                    methods: {
+                        1: '方式一',
+                        2: '方式二',
+                        3: '方式三'
+                    },
+                    dataList: [{
+                            name: '19-2021年第一批解决方案字段字段字段字段字段字段字段字段字段字段字段字段字段字段字段字段字段字段字段字段字段字段字段字段字段字段字段字段字段字段字段字段字段',
+                            estimatedAmount: 144000,
+                            method: 1,
+                            frequency: 3,
+                            timeDeviation: 10,
+                            estimatedTime: '2020-2-18'
+                        },
+                        {
+                            name: '19-2021年第一批解决方案 产品短名单供应商',
+                            estimatedAmount: 144000,
+                            method: 2,
+                            frequency: 3,
+                            timeDeviation: 10,
+                            estimatedTime: '2021-2-18'
+                        },
+                        {
+                            name: '19-2021年第一批解决方案 产品短名单供应商',
+                            estimatedAmount: 144000,
+                            method: 3,
+                            frequency: 3,
+                            timeDeviation: 10,
+                            estimatedTime: '2022-2-18'
+                        }
+                    ],
+                },
+                created: function () {
+
+                },
+                mounted: function () {
+
+                },
+                methods: {
+
+                }
+            })
+        });
+    </script>
+</body>
+
+</html>

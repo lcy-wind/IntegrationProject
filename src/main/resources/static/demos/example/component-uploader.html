@@ -1,0 +1,311 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>文件上传示例</title>
+    <link rel="stylesheet" href="../../asset/css/common.css">
+    <link rel="stylesheet" href="../../asset/libs/prism.js-1.17.1/prism_light.css">
+    <!--辅助: 代码高亮样式, 正式页面不需要引用-->
+</head>
+
+<body>
+    <div id="app" class="warpper" v-cloak>
+        <div class="header">
+            <ul>
+                <li class="home"><a href="#"><img src="../../asset/images/icon-home.png" alt="回到首页"></a></li>
+                <li>|</li>
+                <li>文件上传</li>
+            </ul>
+        </div>
+        <div class="block_container">
+            <div class="title">文件上传1，指定filesId初始值, 仅能上传一个文件，单文件不能大于2MB</div>
+            <div class="content">
+                <table class="table_layout_edit" width="100%">
+                    <tr>
+                        <td style="white-space: nowrap;" width="30%">
+                            <button type="button" class="btn btn_primary" @click="showFiles1">查看文件</button>
+                            <button type="button" class="btn btn_primary" @click="showFiles1Id()">查看文件Id</button>
+                        </td>
+                        <td width="30%">
+                            <popup-uploader v-model="fileIds" ref="files1" @after-upload="afterUpload" max-count="1"
+                                max-file-size="2097152"></popup-uploader>
+                        </td>
+                    </tr>
+                </table>
+                <pre>
+                <code class="language-html">&lt;popup-uploader v-model="fileIds" ref="files1" max-count="1" max-file-size="2097152">&lt;/popup-uploader></code></pre>
+            </div>
+        </div>
+        <div class="block_container">
+            <div class="title">文件上传2，指定filesId初始值,多文件上传</div>
+            <div class="content">
+                <table class="table_layout_edit" width="100%">
+                    <tr>
+                        <td style="white-space: nowrap;" width="30%">
+                            <button type="button" class="btn btn_primary" @click="showFiles2">查看文件</button>
+                            <button type="button" class="btn btn_primary" @click="showFiles2Id()">查看文件Id</button>
+                        </td>
+                        <td width="30%">
+                            <popup-uploader v-model="fileIds2" @after-upload="afterUpload" ref="files2">
+                            </popup-uploader>
+                        </td>
+                    </tr>
+                </table>
+                <pre>
+                <code class="language-html">&lt;popup-uploader v-model="fileIds2" ref="files2">&lt;/popup-uploader></code></pre>
+            </div>
+        </div>
+        <div class="block_container">
+            <div class="title">文件上传3，仅显示按钮</div>
+            <div class="content">
+                <table width="100%">
+                    <tr>
+                        <td style="white-space: nowrap;" width="30%">
+                            <button type="button" class="btn btn_primary" @click="showFiles3">查看文件</button>
+                            <button type="button" class="btn btn_primary" @click="showFiles3Id()">查看文件Id</button>
+                        </td>
+                        <td>
+                            <popup-uploader v-model="fileIds3" :button-mode="true" button-class="icon_check"
+                                :text="null" ref="files3"></popup-uploader>
+                        </td>
+                        <td>
+                            <popup-uploader v-model="fileIds3" :button-mode="true" ref="files4"></popup-uploader>
+                        </td>
+                    </tr>
+                </table>
+                <pre>
+                <code class="language-html">&lt;popup-uploader v-model="fileIds3" :button-mode="true"  button-class="icon_check"
+                                        :text="null" ref="files3">&lt;/popup-uploader></code></pre>
+            </div>
+        </div>
+        <div class="block_container">
+            <div class="title">文件上传3，仅显示按钮</div>
+            <div class="content">
+                <table class="table_layout_edit">
+                    <tr>
+                        <td>
+                            附件
+                        </td>
+                        <td>
+                            <!--<uploader-files v-model="fileIds4" button-class="iconfont icon-shangchuan" :text="null"
+                                ref="files3"></uploader-files>-->
+                        </td>
+                    </tr>
+                </table>
+                <pre>
+                <code class="language-html">&lt;uploader-files v-model="fileIds3" :button-mode="true"  button-class="icon_check"
+                                        :text="null" ref="files3">&lt;/uploader-files></code></pre>
+            </div>
+        </div>
+        <div class="block_container">
+            <div class="title">
+                组件说明
+            </div>
+            <div class="content">
+                <div class="block_overflow">
+                    <table class="table_list table_striped table_hover">
+
+                        <thead>
+                            <tr>
+                                <th>属性</th>
+                                <th>说明</th>
+                                <th>类型</th>
+                                <th>必填</th>
+                                <th>不传时默认值</th>
+                                <th>自动检测父页面值变化</th>
+                                <th>支持.sync</th>
+                            </tr>
+                        </thead>
+
+                        <tr>
+                            <td>v-model</td>
+                            <td>上传文件Id</td>
+                            <td>数组，双向绑定</td>
+                            <td>否</td>
+                            <td>[]</td>
+                            <td>否</td>
+                            <td>否</td>
+                        </tr>
+                        <tr>
+                            <td class="text-nowrap">max-count</td>
+                            <td>最大允许上传的文件数量</td>
+                            <td>数字</td>
+                            <td>否</td>
+                            <td>undefined</td>
+                            <td>是</td>
+                            <td>否</td>
+                        </tr>
+                        <tr>
+                            <td class="text-nowrap">text</td>
+                            <td>按钮文字</td>
+                            <td>字符串</td>
+                            <td>否</td>
+                            <td>'选择文件'</td>
+                            <td>否</td>
+                            <td>否</td>
+                        </tr>
+                        <tr>
+                            <td class="text-nowrap">accept</td>
+                            <td>允许上传文件类型</td>
+                            <td>对象，如：{ title: 'Images', extensions: 'gif,jpg,jpeg,bmp,png', mimeTypes: 'image/*' }<br>
+                                title：字符串，文字描述<br>
+                                extensions：字符串：允许的文件后缀，不带点，多个用逗号分割。
+                                mimeTypes：字符串，多个用逗号分割。
+                            </td>
+                            <td>否</td>
+                            <td>undefined</td>
+                            <td>否</td>
+                            <td>否</td>
+                        </tr>
+                        <tr>
+                            <td>max-file-size</td>
+                            <td>单文件最大值（单位Bytes）</td>
+                            <td>数字</td>
+                            <td>否</td>
+                            <td>undefined</td>
+                            <td>否</td>
+                            <td>否</td>
+                        </tr>
+                        <tr>
+                            <td>button-mode</td>
+                            <td>仅显示按钮</td>
+                            <td>bool</td>
+                            <td>否</td>
+                            <td>false</td>
+                            <td>否</td>
+                            <td>否</td>
+                        </tr>
+                        <tr>
+                            <td>button-class</td>
+                            <td>上传按钮样式，仅显示按钮时生效</td>
+                            <td>字符串</td>
+                            <td>否</td>
+                            <td>btn btn_upload</td>
+                            <td>否</td>
+                            <td>否</td>
+                        </tr>
+                        <tr>
+                            <td>after-upload</td>
+                            <td>文件上传完成回调事件，多文件上传时每个文件上传完成都会触发一次</td>
+                            <td>function</td>
+                            <td>否</td>
+                            <td>无</td>
+                            <td>否</td>
+                            <td>否</td>
+                        </tr>
+                    </table>
+                </div>
+                <table class="table_list table_striped table_hover">
+                    <thead>
+                        <tr>
+                            <th>方法</th>
+                            <th>说明</th>
+                            <th>参数</th>
+                            <th>返回值</th>
+                        </tr>
+                    </thead>
+                    <tr>
+                        <td>setFilesId(ids)</td>
+                        <td>设置上传文件Id，也可用v-model属性设置</td>
+                        <td>ids：字符串数组，已上传的文件id</td>
+                        <td>无</td>
+                    </tr>
+                    <tr>
+                        <td>getFiles()</td>
+                        <td>获取上传文件</td>
+                        <td>无</td>
+                        <td>对象数组</td>
+                    </tr>
+                    <tr>
+                        <td>getFilesId()</td>
+                        <td>获取上传文件Id</td>
+                        <td>无</td>
+                        <td>字符串数组</td>
+                    </tr>
+                </table>
+            </div>
+
+        </div>
+        <pre><code class="language-js">基于WebUploader封装为Vue组件，WebUploader资料参考官网：https://fex.baidu.com/webuploader/
+选择文件后立即开始上传，上传失败时会自动删除选择的文件。
+IE9需安装flash插件方可使用，默认IE9不带flash插件。下载地址：https://www.flash.cn/</code></pre>
+    </div>
+    </div>
+
+    <script type="text/javascript" src="../../asset/libs/require.js-2.3.6/require.min.js"></script>
+    <script type="text/javascript" src="../../asset/js/require-config.js"></script>
+    <script type="text/javascript" src="../../asset/libs/prism.js-1.17.1/prism.js"></script>
+    <!--辅助: 代码高亮, 正式页面不需要引用-->
+
+    <script type="text/javascript">
+        require(['jquery', 'vue', 'global'], function ($, Vue) {
+            var app = new Vue({
+                el: '#app',
+                data: {
+                    fileIds: ['fc220f1b-434e-4bf1-82ca-6ca6d080b09c'], //id为0的附件用于测试，在后台硬编码生成
+                    fileIds2: ['20ad2393-b4c6-4dc7-a9a7-cb80de4ec775', '4e813ce6-d8f3-4208-9da7-d4c86658b2c8'],
+                    fileIds3: [],
+                    files4Accept: {
+                        title: 'Images',
+                        extensions: 'gif,jpg,jpeg,bmp,png',
+                        mimeTypes: 'image/*'
+                    },
+                    fileIds4: []
+                },
+                mounted: function () {
+                    //另一种赋值方式
+                    //this.$refs.files2.setFilesId(['0']);
+                },
+                methods: {
+                    afterUpload: function (item) {
+                        console.log(item);
+                        console.log(item.fullname)
+                    },
+                    showFiles1: function () {
+                        alert(JSON.stringify(this.$refs.files1.getFiles(), function (key, value) {
+                            //files中属性会产生死循环，只显示主要属性
+                            if (key != '' && isNaN(key) && key != 'id' && key !=
+                                'name' && key != 'size') {
+                                return;
+                            }
+                            return value;
+                        }));
+                    },
+                    showFiles1Id: function () {
+                        alert(JSON.stringify(this.$refs.files1.getFilesId()));
+                    },
+                    showFiles2: function () {
+                        alert(JSON.stringify(this.$refs.files2.getFiles(), function (key, value) {
+                            //files中属性会产生死循环，只显示主要属性
+                            if (key != '' && isNaN(key) && key != 'id' && key !=
+                                'name' && key != 'size') {
+                                return;
+                            }
+                            return value;
+                        }));
+                    },
+                    showFiles2Id: function () {
+                        alert(JSON.stringify(this.$refs.files2.getFilesId()));
+                    },
+                    showFiles3: function () {
+                        alert(JSON.stringify(this.$refs.files3.getFiles(), function (key, value) {
+                            //files中属性会产生死循环，只显示主要属性
+                            if (key != '' && isNaN(key) && key != 'id' && key !=
+                                'name' && key != 'size') {
+                                return;
+                            }
+                            return value;
+                        }));
+                    },
+                    showFiles3Id: function () {
+                        alert(JSON.stringify(this.$refs.files3.getFilesId()));
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Button 按钮</title>
+    <link rel="stylesheet" href="../../asset/css/common.css">
+    <link rel="stylesheet" href="../../asset/libs/prism.js-1.17.1/prism_light.css">
+    <!--辅助: 代码高亮样式, 正式页面不需要引用-->
+    <style>
+        .table tr,
+        .table td {
+            border: 1px solid #eeeeee;
+        }
+    </style>
+</head>
+
+<body>
+<div id="app" class="warpper" v-cloak>
+    <div class="header">
+        <ul>
+            <li class="home"><a href="#"><img src="../../asset/images/icon-home.png" alt="回到首页"></a></li>
+            <li>|</li>
+            <li>Button 按钮</li>
+        </ul>
+    </div>
+    <div class="block_container">
+        <div class="title">样式库(新版)
+        </div>
+        <div class="content">
+            <h5 class="text_left"><code>1、Button 按钮(字体库)</code></h5>
+            <div class="fontsize_0">
+                <button type="button" class="btn btn_primary"><i class="iconfont icon-add"></i>新增</button>
+                <button type="button" class="btn btn_primary"><i class="iconfont icon-search"></i>搜索</button>
+                <button type="button" class="btn btn_info"><i class="iconfont icon-reset"></i>重置</button>
+                <button type="button" class="btn"><i class="iconfont icon-back"></i>返回</button>
+                <button type="button" class="btn btn_primary"><i class="iconfont icon-debug"></i> 测试</button>
+                <button type="button" class="btn btn_primary"><i class="iconfont icon-zengliang"></i>增量同步</button>
+                <button type="button" class="btn btn_primary"><i class="iconfont icon-quanliang"></i>全量同步</button>
+                <button type="button" class="btn btn_warning"><i class="iconfont icon-download"></i>下载</button>
+                <button type="button" class="btn btn_normal"><i class="iconfont icon-shangchuan"></i>上传</button>
+                <button type="button" class="btn btn_primary"><i class="iconfont icon-submit"></i>提交</button>
+                <button type="button" class="btn btn_primary"><i class="iconfont icon-process"></i>流程</button>
+                <button type="button" class="btn btn_primary"><i class="iconfont icon-next"></i>提交下一步处理</button>
+                <button type="button" class="btn btn_primary"><i class="iconfont icon-lishi"></i>历史</button>
+                <button type="button" class="btn btn_primary"><i title="随机" class="iconfont icon-suiji-copy"></i>随机</button>
+            </div>
+            <pre>
+<code class="language-html">&lt;button type="button" class="btn btn_primary">&lt;i class="iconfont icon-add">&lt;/i>新增&lt;/button>
+&lt;button type="button" class="btn btn_primary">&lt;i class="iconfont icon-search">&lt;/i>搜索&lt;/button>
+&lt;button type="button" class="btn btn_info">&lt;i class="iconfont icon-reset">&lt;/i>重置&lt;/button>
+&lt;button type="button" class="btn">&lt;i class="iconfont icon-back">&lt;/i>返回&lt;/button>
+&lt;button type="button" class="btn btn_primary">&lt;i class="iconfont icon-debug">&lt;/i> 测试&lt;/button>
+&lt;button type="button" class="btn btn_primary">&lt;i class="iconfont icon-zengliang">&lt;/i>增量同步&lt;/button>
+&lt;button type="button" class="btn btn_primary">&lt;i class="iconfont icon-quanliang">&lt;/i>全量同步&lt;/button>
+&lt;button type="button" class="btn btn_warning">&lt;i class="iconfont icon-download">&lt;/i>下载&lt;/button>
+&lt;button type="button" class="btn btn_normal">&lt;i class="iconfont icon-shangchuan">&lt;/i>上传<&lt;/button>
+&lt;button type="button" class="btn btn_primary">&lt;i class="iconfont icon-submit">&lt;/i>提交&lt;/button>
+&lt;button type="button" class="btn btn_primary">&lt;i class="iconfont icon-process">&lt;/i>流程&lt;/button>
+&lt;button type="button" class="btn btn_primary">&lt;i class="iconfont icon-next">&lt;/i>提交下一步处理&lt;/button>
+&lt;button type="button" class="btn btn_primary">&lt;i class="iconfont icon-lishi">&lt;/i>历史&lt;/button>
+&lt;button type="button" class="btn btn_primary">&lt;i title="随机" class="iconfont icon-suiji-copy">&lt;/i>随机&lt;/button>
+</code></pre>
+            <h5 class="text_left"><code>2、表格行操作按钮</code></h5>
+            <div class="fontsize_0">
+                <i title="详情" class="iconfont icon-check1" type="primary"></i>
+                <i title="编辑" class="iconfont icon-list-edit" type="normal"></i>
+                <i title="删除" class="iconfont icon-delete" type="danger"></i>
+                <i title="上架" class="iconfont icon-shangjia" type="primary"></i>
+                <i title="下架" class="iconfont icon-xiajia" type="primary"></i>
+                <i title="设置" class="iconfont icon-set" type="primary"></i>
+                <i title="同步合同行" class="iconfont icon-keep1" type="primary"></i>
+            </div>
+            <pre>
+<code class="language-html">&lt;i title="详情" class="iconfont icon-check1" type="primary">&lt;/i>
+&lt;i title="编辑" class="iconfont icon-list-edit" type="normal">&lt;/i>
+&lt;i title="删除" class="iconfont icon-delete" type="danger">&lt;/i>
+&lt;i title="上架" class="iconfont icon-shangjia" type="primary">&lt;/i>
+&lt;i title="下架" class="iconfont icon-xiajia" type="primary">&lt;/i>
+&lt;i title="设置" class="iconfont icon-set" type="primary">&lt;/i>
+&lt;i title="同步合同行" class="iconfont icon-keep1" type="primary">&lt;/i>
+</code></pre>
+            <pre><code class="language-js">Icon 图标库:
+参考网址:https://www.iconfont.cn/home/index
+iconfont首页-图标管理-我的项目(联系张雯加入"中国移动软件研发图标库")</code></pre>
+
+        </div>
+
+    </div>
+    <div class="block_container">
+        <div class="title">样式库(旧版)
+        </div>
+        <div class="content">
+            <h5 class="text_left"><code>1、Button 按钮</code></h5>
+            <div>
+                <button type="button" class="btn btn_add">新增</button>
+                <button type="button" class="btn btn_search">搜索</button>
+                <button type="button" class="btn btn_import">导入</button>
+                <button type="button" class="btn btn_save">保存</button>
+                <button type="button" class="btn btn_submit">提交</button>
+                <button type="button" class="btn btn_reset">重置</button>
+                <button type="button" class="btn btn_back">返回</button>
+                <button type="button" class="btn btn_export">导出</button>
+                <button type="button" class="btn btn_download">下载</button>
+                <button type="button" class="btn btn_upload">上传</button>
+                <button type="button" class="btn btn_debug">测试</button>
+            </div>
+            <pre>
+<code class="language-html">&lt;button type="button" class="btn btn_add">新增&lt;/button>
+&lt;button type="button" class="btn btn_search">搜索&lt;/button>
+&lt;button type="button" class="btn btn_import">导入&lt;/button>
+&lt;button type="button" class="btn btn_save">保存&lt;/button>
+&lt;button type="button" class="btn btn_submit">提交&lt;/button>
+&lt;button type="button" class="btn btn_reset">重置&lt;/button>
+&lt;button type="button" class="btn btn_back">返回&lt;/button>
+&lt;button type="button" class="btn btn_export">导出&lt;/button>
+&lt;button type="button" class="btn btn_download">下载&lt;/button>
+&lt;button type="button" class="btn btn_upload">上传&lt;/button>
+&lt;button type="button" class="btn btn_debug">测试&lt;/button>
+</code></pre>
+            <h5 class="text_left"><code>2、表格行操作按钮</code></h5>
+            <pre><code>表格中的操作按钮不允许使用图标+文字按钮，使用方法: &lt;i class="icon_add">&lt;/i>（如需添加，联系前端）</code></pre>
+            <div>
+                <i title="查看" class="icon_check"></i>
+                <i title="编辑" class="icon_edit"></i>
+                <i title="删除" class="icon_delete"></i>
+                <i title="上架" class="icon_put"></i>
+                <i title="下架" class="icon_pull"></i>
+                <i title="用户授权" class="icon_user_authority"></i>
+                <i title="模块授权" class="icon_module_authority"></i>
+                <br style="clear: both;">
+            </div>
+            <pre><code class="language-html">&lt;i title="查看" class="icon_check">&lt;/i>
+&lt;i title="编辑" class="icon_edit">&lt;/i>
+&lt;i title="删除" class="icon_delete">&lt;/i>
+&lt;i title="上架" class="icon_put">&lt;/i>
+&lt;i title="下架" class="icon_pull">&lt;/i>
+&lt;i title="用户授权" class="icon_user_authority">&lt;/i>
+&lt;i title="模块授权" class="icon_module_authority">&lt;/i></code></pre>
+            <p><code>Icon 图标库 </code></p>
+            <table style="background: rgba(0,0,0,.1);width:100%;margin: 0 auto 20px;" class="table text_center">
+                <tr>
+                    <td>
+                        <img src="../../asset/images/add.png">
+                        <p>icon_add</p>
+                    </td>
+                    <td>
+                        <img src="../../asset/images/back.png">
+                        <p>icon_back</p>
+                    </td>
+                    <td>
+                        <img src="../../asset/images/delete.png">
+                        <p>icon_delete</p>
+                    </td>
+                    <td>
+                        <img src="../../asset/images/download.png">
+                        <p>icon_download</p>
+                    </td>
+                    <td>
+                        <img src="../../asset/images/export.png">
+                        <p>icon_export</p>
+                    </td>
+                    <td>
+                        <img src="../../asset/images/import.png">
+                        <p>icon_import</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <img src="../../asset/images/people.png">
+                        <p>icon_people</p>
+                    </td>
+                    <td>
+                        <img src="../../asset/images/reset.png">
+                        <p>icon_reset</p>
+                    </td>
+                    <td>
+                        <img src="../../asset/images/save.png">
+                        <p>icon_save</p>
+                    </td>
+                    <td>
+                        <img src="../../asset/images/search.png">
+                        <p>icon_search</p>
+                    </td>
+                    <td>
+                        <img src="../../asset/images/search-input.png">
+                        <p>icon_search_grey</p>
+                    </td>
+                    <td>
+                        <img src="../../asset/images/submit.png">
+                        <p>icon_submit</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <img src="../../asset/images/calendar.png">
+                        <p>icon_calendar</p>
+                    </td>
+                    <td>
+                        <img src="../../asset/images/icon-upload.png">
+                        <p>icon_upload</p>
+                    </td>
+                    <td>
+                        <img src="../../asset/images/icon-menu.png">
+                        <p>icon_menu</p>
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>
+                        <img src="../../asset/images/list-check.png">
+                        <p>icon_check</p>
+                    </td>
+                    <td>
+                        <img src="../../asset/images/list-edit.png">
+                        <p>icon_edit</p>
+                    </td>
+                    <td>
+                        <img src="../../asset/images/list-delete.png">
+                        <p>icon_delete</p>
+                    </td>
+                    <td>
+                        <img src="../../asset/images/list-detail.png">
+                        <p>icon_detail</p>
+                    </td>
+                    <td>
+                        <img src="../../asset/images/put.png">
+                        <p>icon_put</p>
+                    </td>
+                    <td>
+                        <img src="../../asset/images/pull.png">
+                        <p>icon_pull</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <img src="../../asset/images/list_module_authority.png" />
+                        <p>icon_module_authority</p>
+                    </td>
+                    <td>
+                        <img src="../../asset/images/list_user_authority.png" />
+                        <p>icon_user_authority</p>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="../../asset/libs/require.js-2.3.6/require.min.js"></script>
+<script type="text/javascript" src="../../asset/js/require-config.js"></script>
+<script type="text/javascript" src="../../asset/libs/prism.js-1.17.1/prism.js"></script>
+<!--辅助: 代码高亮, 正式页面不需要引用-->
+<script type="text/javascript">
+    require(['jquery', 'vue', 'global'], function ($, Vue) {
+        var app = new Vue({
+            el: '#app',
+            data: {},
+            created: function () {
+
+
+
+            },
+            mounted: function () {
+
+            },
+            methods: {
+
+            }
+        })
+    });
+</script>
+</body>
+
+</html>

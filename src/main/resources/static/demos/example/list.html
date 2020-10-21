@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>列表</title>
+    <link rel="stylesheet" type="text/css" href="../../asset/css/common.css" />
+</head>
+<body>
+<div id="app" class="warpper" v-cloak>
+    <div class="header">
+        <ul>
+            <li class="home"><a href="#"><img src="../../asset/images/icon-home.png" alt="回到首页"></a></li>
+            <li>|</li>
+            <li>列表名称</li>
+        </ul>
+    </div>
+    <div class="block_container">
+        <div class="title">
+            标题
+        </div>
+        <div class="block_overflow">
+            <div class="search_filter">
+                <table>
+                    <tr>
+                        <td>选择年份</td>
+                        <td>
+                            <select class="form_control">
+                                <option>请选择查询条件</option>
+                                <option>计划编号</option>
+                                <option>项目名称</option>
+                                <option>需求部门</option>
+                                <option>年度</option>
+                                <option>采购品类</option>
+                            </select>
+                        </td>
+                    
+                        <td class="nowrap">
+                            <button type="button" class="btn btn_search">查询</button>
+                            <button type="button" class="btn btn_search">高级查询</button>
+                            <button type="button" class="btn ">ICT子公司任务列表</button>
+                            <button type="button" class="btn ">集客任务列表</button>
+                            <button type="button" class="btn btn_export">导出为Excel</button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <table class="table_list table_striped table_hover text_center">
+                <thead>
+                <tr>
+                    <th>创建时间</th>
+                    <th>项目</th>
+                    <th>任务</th>
+                    <th>任务类型</th>
+                    <th>工程管理专业类型</th>
+                    <th>任务开始时间</th>
+                    <th>创建人</th>
+                    <th>主要负责人</th>
+                    <th>任务经理</th>
+                    <th>导入MIS</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr v-if="dataList && dataList.length == 0">
+                    <td colspan="11">暂无数据</td>
+                </tr>
+                <tr v-for="(item, index) in dataList">
+                    <td>{{item.value}}</td>
+                    <td class="text_left"><p v-ellipsis>{{item.name}}</p></td>
+                    <td>{{item.year}}</td>
+                    <td>{{item.department}}</td>
+                    <td class="nowrap">{{item.estimatedAmount}}</td>
+                    <td>{{item.method}}</td>
+                    <td>{{item.frequency}}</td>
+                    <td>{{item.startTime}}</td>
+                    <td><select class="form_control">
+                                <option>沈玉坤</option>
+                                <option>李建华</option>
+                                <option>刘强</option>
+                                <option>张波</option>
+                                <option>常天鹏</option>
+                            </select></td>
+                    <td>{{item.estimatedTime}}</td>
+                    <td class="nowrap">
+                        <i title="查看" class="icon_check"></i>
+                        <i title="编辑" class="icon_edit"></i>
+                        <i title="删除" class="icon_delete" @click="deleteRow(index)"></i>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <pagination :total-count="totalCount" @page-change="bindTable" ref="pag"></pagination>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="../../asset/libs/require.js-2.3.6/require.min.js"></script>
+<script type="text/javascript" src="../../asset/js/require-config.js"></script>
+<script>
+require(['jquery','vue','global'], function ($, Vue) {
+    var vm = new Vue({
+        el: "#app",
+        data: function () {
+            return {
+                dataList:[{
+                    value:'暂无',
+                    name:'暂无',
+                    year:'暂无',
+                    department:'暂无',
+                    estimatedAmount:'暂无',
+                    method:'暂无',
+                    frequency:'暂无',
+                    startTime:'暂无',
+                    timeDeviation:'暂无',
+                    estimatedTime:'暂无'
+                }]
+            }
+        },
+        mounted: function () {
+                
+        }
+    })
+ });
+</script>
+</body>
+</html>
