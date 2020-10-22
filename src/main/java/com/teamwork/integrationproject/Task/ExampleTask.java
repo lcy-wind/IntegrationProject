@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 public class ExampleTask
 {
 
-    @Autowired(required = false)
+    @Autowired
     private TemplateUtils restTemplateUtils;
 
     @Autowired
