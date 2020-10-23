@@ -2,6 +2,7 @@ package com.teamwork.integrationproject;
 
 import com.alibaba.fastjson.JSONObject;
 import com.teamwork.integrationproject.common.props.ApiProperties;
+import com.teamwork.integrationproject.common.rocketmq.AccountStreamService;
 import com.teamwork.integrationproject.entity.Student;
 import com.teamwork.integrationproject.mapper.StudentMapper;
 import com.teamwork.integrationproject.mapper.TUserMapper;
@@ -52,12 +53,11 @@ class IntegrationProjectApplicationTests
         LogHelper.info(this,"kkkkkkk");
     }
 
+    @Autowired
+    private AccountStreamService streamService;
     @Test
-    public void test()
-    {
-        List<Student> students = studentMapper.selectList(null);
-        System.out.println(students+"ssss");
+    public void testRocketMQ(){
+        boolean send = streamService.send("hello -sss--");
     }
-
 
 }
