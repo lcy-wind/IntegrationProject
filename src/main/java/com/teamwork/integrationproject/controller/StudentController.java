@@ -1,6 +1,7 @@
 package com.teamwork.integrationproject.controller;
 
 import com.teamwork.integrationproject.dto.GenericTypeResponse;
+import com.teamwork.integrationproject.dto.StudentDto;
 import com.teamwork.integrationproject.entity.Student;
 import com.teamwork.integrationproject.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,8 +25,8 @@ public class StudentController
     //页面数据查询
     @PostMapping("/selectStudentList")
     public GenericTypeResponse selectStudentList() {
-        List<Student> students = studentService.selectStudentList();
-        return new GenericTypeResponse(students);
+        List<StudentDto> studentDtoList = studentService.selectStudentList();
+        return new GenericTypeResponse(studentDtoList);
     }
 
 }

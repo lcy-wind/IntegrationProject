@@ -1,6 +1,7 @@
 package com.teamwork.integrationproject.controller;
 
 import com.teamwork.integrationproject.common.export.ExportTemplate;
+import com.teamwork.integrationproject.dto.StudentDto;
 import com.teamwork.integrationproject.entity.Student;
 import com.teamwork.integrationproject.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,9 +30,9 @@ public class ExportController {
     //针对表数据进行导出
     @PostMapping("/exportStudentList")
     public void exportStudentList(HttpServletRequest request, HttpServletResponse response) {
-        List<Student> students = studentService.selectStudentList();
+        List<StudentDto> studentDtoList = studentService.selectStudentList();
         List<Map<String, Object>> dataList = new ArrayList<>();
-        students.forEach(student -> {
+        studentDtoList.forEach(student -> {
             HashMap<String, Object> map = new HashMap<>();
             map.put("name",student.getName());
             map.put("grade",student.getGrade());
