@@ -13,7 +13,7 @@ import java.util.Map;
  */
 @Component
 //此注解只能扫描properties文件   如果使用yaml文件  只能扫描到application.yml文件 无法找到自定义yml文件
-@PropertySource(value = {"classpath:env/dev/apiUrl.properties"},ignoreResourceNotFound = false,encoding = "UTF-8",name = "env/dev/apiUrl.properties")
+@PropertySource(value = {"classpath:env/dev/apiUrl.yml"},ignoreResourceNotFound = false,encoding = "UTF-8",name = "env/dev/apiUrl.yml")
 @ConfigurationProperties(prefix = "api",ignoreUnknownFields=true,ignoreInvalidFields=true)
 @Data
 public class ApiProperties

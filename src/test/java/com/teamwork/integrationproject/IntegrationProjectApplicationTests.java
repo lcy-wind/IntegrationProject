@@ -57,7 +57,7 @@ class IntegrationProjectApplicationTests
     private AccountStreamService streamService;
     @Test
     public void testRocketMQ(){
-        boolean send = streamService.send("hello -sss--");
+        boolean send = streamService.send("hello -rocketMQ-->>");
     }
 
 }

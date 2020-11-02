@@ -56,7 +56,7 @@ public class PmsEnvironmentPostProcessor implements EnvironmentPostProcessor
         locationPrefixs.add(DEFAULT_CONFIG_DIR + "*");
         //profile config file
         activeProfiles.stream().forEach(profile -> {
-            locationPrefixs.add(DEFAULT_CONFIG_DIR + profile + "/*-" + profile);
+            locationPrefixs.add(DEFAULT_CONFIG_DIR + profile + "/*");
         });
 
         for (String locationPrefix : locationPrefixs)
