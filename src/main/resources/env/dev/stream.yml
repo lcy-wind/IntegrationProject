@@ -1,0 +1,21 @@
+spring:
+  cloud:
+    stream:
+      bindings:
+        accountEvent:
+          destination: account-event
+          content-type: application/json
+      rocketmq:
+        binder:
+          name-server: 47.240.68.6:9876
+        bindings:
+          roleData:
+            consumer:
+              orderly: true
+          accountEvent:
+            producer:
+              group: ${spring.application.name}
+              sync: true
+              vipChannelEnabled: false
+#              transactional: true
+

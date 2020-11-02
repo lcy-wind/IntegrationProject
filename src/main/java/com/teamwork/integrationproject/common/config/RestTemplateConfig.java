@@ -8,6 +8,7 @@ import org.springframework.web.client.RestTemplate;
 
 /**
  * RestTemplate配置模板
+ * 全局注入restTemple配置类
  * @author like
  */
 @Configuration

@@ -1,0 +1,141 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <title>DatePicker/DateTimePicker，日期/日期时间输入组件</title>
+    <link rel="stylesheet" href="../../asset/css/common.css">
+    <link rel="stylesheet" href="../../asset/libs/prism.js-1.17.1/prism_light.css"><!--辅助: 代码高亮样式, 正式页面不需要引用-->
+    <style>
+        .table {
+            width: 100%;
+        }
+
+        .table th.table tr, .table td {
+            border: 1px solid #dddddd;
+        }
+    </style>
+</head>
+<body>
+    <div id="app" class="warpper" v-cloak>
+        <div class="header">
+            <ul>
+                <li class="home"><a href="#"><img src="../../asset/images/icon-home.png" alt="回到首页"></a></li>
+                <li>|</li>
+                <li>日期控件</li>
+            </ul>
+        </div>
+        <div class="block_container">
+            <div class="title">
+                选择日期
+            </div>
+            <div class="content">
+                <table class="table_layout_edit">
+                    <tr>
+                        <td class="required">选择日期</td>
+                        <td>
+                            <date-picker v-model="date1" :min-date="'%y-%M-{%d+1}'"></date-picker>
+                        </td>
+                        <td class="required">选择日期时间</td>
+                        <td>
+                            <datetime-picker v-model="datetime1" :disabled="false"></datetime-picker>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="block_container language-markup">
+            <div class="title">
+                组件说明
+            </div>
+            <div class="content">
+                <div class="sy_group">
+                    选择日期: <code>&lt;date-picker>&lt;/date-picker></code><br>
+                    选择日期时间: <code>&lt;datetime-picker>&lt;/datetime-picker></code>
+                </div>
+                <table class="table_list table_striped table_hover">
+                    <thead>
+                    <tr>
+                        <th>属性</th>
+                        <th>说明</th>
+                        <th>类型</th>
+                        <th>必填</th>
+                        <th>不传时默认值</th>
+                        <th>自动检测父页面值变化</th>
+                        <th>支持.sync</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td class="text-nowrap">v-model</td>
+                        <td>日期/日期时间值</td>
+                        <td>字符串</td>
+                        <td>否</td>
+                        <td>''</td>
+                        <td>是</td>
+                        <td>否</td>
+                    </tr>
+                    <tr>
+                        <td class="text-nowrap">disabled</td>
+                        <td>是否禁用</td>
+                        <td>布尔值</td>
+                        <td>否</td>
+                        <td>false</td>
+                        <td>是</td>
+                        <td>否</td>
+                    </tr>
+                    <tr>
+                        <td class="text-nowrap">max-date</td>
+                        <td>最大可选日期</td>
+                        <td>字符串</td>
+                        <td>否</td>
+                        <td>undefined</td>
+                        <td>否</td>
+                        <td>否</td>
+                    </tr>
+                    <tr>
+                        <td class="text-nowrap">min-date</td>
+                        <td>最小可选日期</td>
+                        <td>字符串</td>
+                        <td>否</td>
+                        <td>undefined</td>
+                        <td>否</td>
+                        <td>否</td>
+                    </tr>
+                    </tbody>
+                </table>
+                <pre class="language-js">
+    <code>日期时间控件基于My97DatePicker封装为Vue组件，My97DatePicker资料参考官网：http://www.my97.net/
+    已下载皮肤twoer，并在My97DatePicker-4.8/WdatePicker.js中配置skin:"twoer"。
+    为使与Bootstrap风格统一，已修改My97DatePicker-4.8/WdatePicker.css中的Wdate样式。
+    时间范围限制见 http://my97.net/demo/index.htm 的动态限制及静态限制
+    </code></pre>
+            </div>
+        </div>
+    </div>
+
+<script type="text/javascript" src="../../asset/libs/require.js-2.3.6/require.min.js"></script>
+<script type="text/javascript" src="../../asset/js/require-config.js"></script>
+<script type="text/javascript" src="../../asset/libs/prism.js-1.17.1/prism.js"></script><!--辅助: 代码高亮, 正式页面不需要引用-->
+<script type="text/javascript">
+    require(['jquery', 'vue', 'global'], function ($, Vue) {
+        var app = new Vue({
+            el: '#app',
+            data: {
+                date: '2019-10-10',
+                date1: '',
+                datetime: '2019-10-23 19:47:05',
+                datetime1: ''
+            },
+            created: function () {
+
+            },
+            methods: {}
+        })
+
+
+    });
+</script>
+</body>
+</html>

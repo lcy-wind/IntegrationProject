@@ -1,0 +1,280 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+[v-cloak] {
+	display: none !important;
+}
+
+a {
+	color: #FFFFFF;
+	text-decoration: none;
+}
+
+ul li {
+	list-style-type: none;
+}
+
+a:active {
+	color: #ffbe00;
+}
+
+body {
+	font-family: "微软雅黑";
+	height: 100%;
+	background: #f5f5f5;
+}
+
+.clear {
+	clear: both;
+}
+
+.container {
+	min-height: 500px;
+}
+
+.heander {
+	height: 89px;
+	width: 100%;
+	background: #e9eef2;
+	border-bottom: 1px solid #a3a5a7;
+}
+
+.heander_center {
+	width: 1210px;
+	height: 89px;
+	margin: 0 auto;
+}
+
+.logo {
+	float: left;
+	display: block;
+	padding-top: 20px;
+}
+
+.go_home {
+	color: #52acf0;
+	display: block;
+	float: right;
+	background: url(../images/icon-home.png) no-repeat;
+	background-position: 0px 32px;
+	color: #52acf0;
+	font-family: "微软雅黑";
+	font-size: 18px;
+	padding: 30px 10px 0px 20px;
+}
+
+.wrapper {
+	position: relative;
+	width: 100%;
+	top: 0;
+	left: 0;
+}
+
+.login_warpper {
+	margin: 40px 50px 0 0;
+	float: right;
+	width: 370px;
+	height: 410px;
+}
+
+.login_title {
+	font-size: 14px;
+	padding: 0 0 10px;
+}
+
+.login_tab {
+	width: 370px;
+	height: 410px;
+	background: #e9eef2;
+	position: relative;
+}
+
+.login_tab_tittle {
+	margin: 0 auto;
+	padding-top: 30px;
+	width: 320px;
+	height: auto;
+	overflow: hidden;
+	border-bottom: 1px solid #FFFFFF;
+	line-height: 40px;
+}
+
+.login_tab_tittle li {
+	text-align: center;
+	width: 160px;
+	margin: 0 auto;
+	font-family: "微软雅黑";
+	font-size: 18px;
+	float: left;
+	color: #666666;
+	cursor: pointer;
+}
+
+.active {
+	text-align: center;
+	width: 160px;
+	margin: 0 auto;
+	border-bottom: 1px solid #3498db;
+	font-family: "微软雅黑";
+	font-size: 18px;
+	float: left;
+	color: #666666;
+	cursor: pointer;
+}
+
+.ewm_code {
+	height: 170px;
+	width: 170px;
+	border: 1px solid #D3D3D3;
+	z-index: 1;
+	margin: 40px auto 40px;
+}
+
+.ewm_code img {
+	width: 168px;
+	height: 168px;
+}
+
+.success_ewm {
+	width: 91px;
+	margin: 70px auto 20px;
+	overflow: hidden;
+}
+
+.label_tishi {
+	font-family: "微软雅黑";
+	font-size: 16px;
+	text-align: center;
+}
+
+.label_tishi span {
+	color: #3498db;
+}
+
+.account {
+	width: 270px;
+	margin: 25px auto;
+}
+
+.passworld {
+	/*width: 205px;*/
+	width: 270px;
+	height: 35px;
+	line-height: 35px;
+	padding-left: 5px;
+}
+
+.jizhu_label {
+	border: none;
+	border: 1px solid #999999;
+	width: 18px;
+	height: 18px;
+}
+
+.label_text {
+	font-size: 14px;
+	color: #666666;
+}
+
+.login_btn {
+	width: 275px;
+	height: 40px;
+	border: none;
+	background: #3498DB;
+	color: #FFFFFF;
+	font-size: 18px;
+	line-height: 40px;
+	text-align: center;
+	cursor: pointer;
+	border-radius: 4px;
+	font-family: "微软雅黑";
+}
+
+.floater {
+	float: left;
+	height: 50%;
+	margin-bottom: -279px;
+}
+
+.wrapper_bj {
+	clear: both;
+	width: 1210px;
+	background: url(../images/icon-_bj.png) no-repeat;
+	height: 558px;
+	margin: 0 auto;
+	box-sizing: border-box;
+	background-size: 100%;
+}
+
+.bottom {
+	height: 51px;
+	width: 100%;
+	background: #e9eef2;
+	border-top: 1px solid #a3a5a7;
+}
+
+.bottom-center {
+	width: 1210px;
+	height: 51px;
+	margin: 0 auto;
+	color: #333333;
+	font-family: "微软雅黑";
+	font-size: 14px;
+	line-height: 51px;
+}
+
+.bottom-left {
+	float: left;
+}
+
+.bottom-right {
+	float: right;
+}
+
+
+.module {
+	width: 171px;
+	height: 171px;
+	position: absolute;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin: -85px 0 0 -86px;
+	font-family: "微软雅黑";
+	text-align: center;
+	display: none;
+}
+
+.module .opacityModule {
+	height: 171px;
+	width: 171px;
+	background: #000;
+	opacity: 0.6;
+	filter: Alpha(opacity=60);
+	position: absolute;
+	left: 0;
+	top: 0;
+
+}
+
+.module .InformationContent {
+	height: 171px;
+	width: 171px;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	margin: -85px 0 0 -86px;
+	opacity: 0;
+	filter: alpha(opacity=0);
+	font-family: "微软雅黑";
+	color: #FFFFFF;
+	text-align: center;
+}
+
+.moduleMessage {
+	font-size: 18px;
+	padding: 55px 0;
+	cursor: pointer;
+}

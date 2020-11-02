@@ -1,0 +1,59 @@
+
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>富文本编辑器</title>
+    <link rel="stylesheet" href="../../asset/css/common.css">
+    <link rel="stylesheet" href="../../asset/libs/prism.js-1.17.1/prism_light.css"><!--辅助: 代码高亮样式, 正式页面不需要引用-->
+</head>
+<body>
+    <div id="app" class="warpper" v-cloak>
+        <div class="header">
+            <ul>
+                <li class="home"><a href="#"><img src="../../asset/images/icon-home.png" alt="回到首页"></a></li>
+                <li>|</li>
+                <li>富文本编辑器</li>
+            </ul>
+        </div>
+        <div class="block_container">
+            <div class="title">
+                富文本编辑器
+            </div>
+            <div class="content">
+                <h5 class="text_left"><code>CKEditor Full</code>  </h5>
+                <pre><code class="language-html">&lt;ckeditor v-model="content1" simple="false">&lt;/ckeditor></code></pre>
+                <ckeditor v-model="content1" simple="false"></ckeditor>
+                <h5 class="text_left"><code>CKEditor Simple</code></h5>
+                <pre><code class="language-html">&lt;ckeditor v-model="content2">&lt;/ckeditor></code></pre>
+                <ckeditor v-model="content2"></ckeditor>
+            </div>
+        </div>
+    </div>
+
+<script type="text/javascript" src="../../asset/libs/require.js-2.3.6/require.min.js"></script>
+<script type="text/javascript" src="../../asset/js/require-config.js"></script>
+<script type="text/javascript" src="../../asset/libs/prism.js-1.17.1/prism.js"></script><!--辅助: 代码高亮, 正式页面不需要引用-->
+<script type="text/javascript">
+    require(['jquery', 'vue', 'global'], function ($, Vue) {
+        var app = new Vue({
+            el: '#app',
+            data: {
+                content1: '<pre>&lt;ckeditor v-model=&quot;content1&quot; simple=&quot;false&quot;&gt;&lt;/ckeditor&gt;</pre>',
+                content2: '<pre>&lt;ckeditor v-model=&quot;content2&quot; &gt;&lt;/ckeditor&gt;</pre>'
+            },
+            methods: {
+                submit: function () {
+                    console.log(this.content1);
+                    console.log(this.content2);
+
+                }
+            }
+        });
+    });
+</script>
+</body>
+
+</html>

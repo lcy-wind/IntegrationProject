@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>金额转大写</title>
+    <link rel="stylesheet" href="../../asset/css/common.css">
+    <link rel="stylesheet" href="../../asset/libs/prism.js-1.17.1/prism_light.css">
+    <!--辅助: 代码高亮样式, 正式页面不需要引用-->
+    <style></style>
+</head>
+
+<body>
+    <div id="app" class="warpper" v-cloak>
+        <div class="header">
+            <ul>
+                <li class="home"><a href="#"><img src="../../asset/images/icon-home.png" alt="回到首页"></a></li>
+                <li>|</li>
+                <li>金额转大写</li>
+            </ul>
+        </div>
+        <div class="block_container">
+            <div class="title">
+                说明
+            </div>
+            <div class="content">
+                <table class="table_layout_edit">
+                    <tr is="to-uppercase" :popinputdataleve1="popInputData"></tr>
+                    <tr is="to-uppercase" :popinputdataleve1="popInputData2"></tr>
+                    <tr>
+                        <td>转千分位</td>
+                        <td>
+                            <p is="to-thousands" :modeldata="dataList.estimatedAmount" class="detail_line"></p>
+                        </td>
+                    </tr>
+                </table>
+
+            </div>
+            <span class="help-block">value1={{popInputData}}</span></br>
+            <span class="help-block">value2={{popInputData2}}</span>
+        </div>
+
+        <div class="block_container">
+            <div class="title">
+                组件说明
+            </div>
+            <div class="content">
+                1、vue中is的作用和用法详见<a
+                    href="https://segmentfault.com/a/1190000017262264">https://segmentfault.com/a/1190000017262264</a><br />
+                2、popInputData中的 label表示金额文本标题；money 小写数字金额；upperMoney会根据小写数字赋值
+                <pre><code class="language-js">代码示例：
+转千分位：&lt;p is="to-thousands" :modeldata="dataList.estimatedAmount"  class="detail_line">&lt;/p> "加detail_line有下划线，用于表格"
+转大写金额：&lt;tr is="to-uppercase" :popinputdataleve1="popInputData" :popData.sync="popInputData">&lt;/tr>
+数据源：
+require(['jquery','vue','global'], function ($, Vue) {
+        var app = new Vue({
+            el: '#app',
+            data: {
+                popInputData:{
+                    label:'金额1',
+                    money:'',
+                    upperMoney:''
+                },
+                popInputData2:{
+                    label:'金额2',
+                    money:'21',
+                    upperMoney:''
+                },
+                dataList:{
+                    estimatedAmount:123344555
+                }
+            },
+    });
+</code>
+</pre>
+
+            </div>
+        </div>
+    </div>
+</body>
+<script type="text/javascript" src="../../asset/libs/require.js-2.3.6/require.min.js"></script>
+<script type="text/javascript" src="../../asset/js/require-config.js"></script>
+<script type="text/javascript" src="../../asset/libs/prism.js-1.17.1/prism.js"></script>
+<!--辅助: 代码高亮, 正式页面不需要引用-->
+<script type="text/javascript">
+    require(['jquery', 'vue', 'global'], function ($, Vue) {
+        var app = new Vue({
+            el: '#app',
+            data: {
+                popInputData: {
+                    label: '金额1',
+                    money: '',
+                    upperMoney: ''
+                },
+                popInputData2: {
+                    label: '金额2',
+                    money: '21',
+                    upperMoney: '12'
+                },
+                dataList: {
+                    estimatedAmount: 123344555
+                }
+            },
+            created: function () {
+
+            },
+            mounted: function () {
+                // this.qianfenwei('12233.88')
+            },
+            methods: {
+                qianfenwei: function (index) {
+                    console.log(index);
+                    var a = index - 0;
+                    var num = a.toFixed(2) + ""; //保留两位小数
+                    app.qianfen = num.replace(/(\d{1,3})(?=(\d{3})+(?:$|\.))/g, '$1,')
+                }
+            }
+        })
+    });
+</script>

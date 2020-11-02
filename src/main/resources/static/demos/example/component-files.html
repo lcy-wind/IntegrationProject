@@ -1,0 +1,154 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>附件下载组件</title>
+    <link rel="stylesheet" href="../../asset/css/common.css">
+    <link rel="stylesheet" href="../../asset/libs/prism.js-1.17.1/prism_light.css">
+    <!--辅助: 代码高亮样式, 正式页面不需要引用-->
+</head>
+
+<body>
+    <div id="app" class="warpper" v-cloak>
+        <div class="header">
+            <ul>
+                <li class="home"><a href="#"><img src="../../asset/images/icon-home.png" alt="回到首页"></a></li>
+                <li>|</li>
+                <li>附件下载组件</li>
+            </ul>
+        </div>
+        <div class="block_container">
+            <div class="title">附件下载组件</div>
+            <div class="content">
+                <table class="table_layout_edit">
+                    <tr>
+                        <td>附件下载</td>
+                        <td colspan="3">
+                            <files :files="files"></files>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </table>
+                <pre>
+                <code class="language-js">&lt;files :files="files">&lt;/files></code></pre>
+                <table class="table_layout_edit">
+                    <tr>
+                        <td>附件下载（无数据状态）</td>
+                        <td colspan="3">
+                            <files :files="noneFile"></files>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </table>
+                <pre>
+                <code class="language-js">&lt;files :files="noneFile">&lt;/files></code></pre>
+                <table class="table_layout_edit">
+                    <tr>
+                        <td>附件下载（文件ID赋值）</td>
+                        <td colspan="3">
+                            <files :files-id="fileIds"></files>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </table>
+                <pre>
+                <code class="language-js">&lt;files :files-id="fileIds">&lt;/files></code></pre>
+            </div>
+        </div>
+
+        <div class="block_container">
+            <div class="title">
+                组件说明
+            </div>
+            <div class="content">
+                <table class="table_list table_list_sub text_center">
+                    <thead>
+                        <tr>
+                            <th>属性</th>
+                            <th>说明</th>
+                            <th>类型</th>
+                            <th>必填</th>
+                            <th>不传时默认值</th>
+                            <th>自动检测父页面值变化</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="text-nowrap">:file</td>
+                            <td>JSON格式：<code>
+                                    [{
+                                    "id" : "id",
+                                    "fullname" : "文件名称",
+                                    "contentLength" : "文件大小",
+                                    "contentType" : "文件类型"
+                                    }]
+                                </code></td>
+                            <td>数组</td>
+                            <td>否</td>
+                            <td>空数组</td>
+                            <td>是</td>
+                        </tr>
+                        <tr>
+                            <td>:files-id</td>
+                            <td><code>
+                                    ['0','1']
+                                </code></td>
+                            <td>数组</td>
+                            <td>否和files二选一</td>
+                            <td>空数组</td>
+                            <td>是</td>
+                        </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="../../asset/libs/require.js-2.3.6/require.min.js"></script>
+    <script type="text/javascript" src="../../asset/js/require-config.js"></script>
+    <script type="text/javascript" src="../../asset/libs/prism.js-1.17.1/prism.js"></script>
+    <!--辅助: 代码高亮, 正式页面不需要引用-->
+
+    <script type="text/javascript">
+        require(['jquery', 'vue', 'global'], function ($, Vue) {
+            var app = new Vue({
+                el: '#app',
+                data: {
+                    files: [{
+                        "id": "370643177742270464",
+                        "fullname": "2019产品创建0010633的采购项目",
+                        "applyUsername": "测试用户",
+                        "contentLength": "123104",
+                        "contentType": "采购项目-附件"
+                    }, {
+                        "id": "370643177742270465",
+                        "fullname": "2019产品创建0010655的采购项目",
+                        "applyUsername": "测试用户",
+                        "contentLength": "153204",
+                        "contentType": ""
+                    }],
+                    noneFile: [],
+                    fileIds: ['fc220f1b-434e-4bf1-82ca-6ca6d080b09c', '4e813ce6-d8f3-4208-9da7-d4c86658b2c8']
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

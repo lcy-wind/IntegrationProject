@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>下拉树组件</title>
+    <link rel="stylesheet" href="../../asset/css/common.css">
+    <style>
+        input {
+            outline: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app" class="warpper" v-cloak>
+        <div class="header">
+            <ul>
+                <li class="home"><a href="#"><img src="../../asset/images/icon-home.png" alt="回到首页"></a></li>
+                <li>|</li>
+                <li>下拉树组件</li>
+            </ul>
+        </div>
+        <div class="block_container">
+            <div class="title">
+                下拉树组件
+            </div>
+            <div class="content">
+                <table class="table_layout_edit">
+                    <tr>
+                        <td class="required">下拉树 单选</td>
+                        <td>
+                            <select-tree :multi="false" v-model="selectNode" p-id-key="parentId" name-key="fullname"
+                                data-Url="../json/select-ztree.json" @change="change"></select-tree>
+                        </td>
+                        <td class="required">下拉树 默认提示</td>
+                        <td>
+                            <select-tree :multi="false" placeholder="请选择部门" v-model="defaultData" p-id-key="parentId"
+                                name-key="fullname" @change="change" data-Url="../json/select-ztree.json"></select-tree>
+                        </td>
+                    </tr>
+                    <tr>
+
+
+                        <td class="required">下拉树 多选</td>
+                        <td>
+                            <select-tree v-model="selectNodes" v-model="organizations2" p-id-key="parentId"
+                                name-key="fullname" @change="change" data-Url="../json/select-ztree.json"></select-tree>
+                        </td>
+                        <td class="required">下拉树 多选(input最多显示2个标签)</td>
+                        <td>
+                            <select-tree max-tag-count="2" v-model="organizations3" :isdelete="true" p-id-key="parentId"
+                                name-key="fullname" @change="change" data-Url="../json/select-ztree.json"></select-tree>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="required">下拉树 分级选</td>
+                        <td>
+                            <select-tree max-tag-count="2" v-model="organizations" p-id-key="parentId"
+                                name-key="fullname" data-Url="../json/select-ztree.json" @change="change"></select-tree>
+                        </td>
+                        <td class="required">下拉树 最多只能选择2个部门</td>
+                        <td>
+                            <select-tree max-choose-num="2" v-model="organizations4" p-id-key="parentId"
+                                name-key="fullname" data-Url="../json/select-ztree.json" @change="change"></select-tree>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="required">单选人</td>
+                        <td>
+                            <select-tree :multi="false" v-model="defaultData2" name-key="name"
+                                data-Url="../json/ztree-user.json" @change="change"></select-tree>
+                        </td>
+                        <td></td>
+                        <td>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="block_container language-markup">
+            <div class="title">
+                组件说明
+            </div>
+            <div class="content">
+                <div class="sy_group">
+                    调用格式: <code>&lt;select-tree>&lt;/select-tree></code><br>
+                </div>
+                <table class="table_list">
+                    <thead>
+                        <tr>
+                            <th>属性</th>
+                            <th>说明</th>
+                            <th>类型</th>
+                            <th>必填</th>
+                            <th>不传时默认值</th>
+                            <th>自动检测父页面值变化</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="text-nowrap">:value/v-model</td>
+                            <td>默认选中值，双向绑定</td>
+                            <td>数组</td>
+                            <td>否</td>
+                            <td>[]</td>
+                            <td>是</td>
+                        </tr>
+                        <tr>
+                            <td class="text-nowrap">multi</td>
+                            <td>
+                                是否多选<br />
+                                true:显示多选框 CheckBox
+                                false:显示单选框 radio
+                            </td>
+                            <td>布尔</td>
+                            <td>否</td>
+                            <td>true</td>
+                            <td>否</td>
+                        </tr>
+                        <tr>
+                            <td class="text-nowrap">placeholder</td>
+                            <td>选择框默认文字</td>
+                            <td>字符串</td>
+                            <td>否</td>
+                            <td>"请选择"</td>
+                            <td>否</td>
+                        </tr>
+                        <tr>
+                            <td class="text-nowrap">data-url</td>
+                            <td>获取数据的接口地址</td>
+                            <td>字符串</td>
+                            <td>是</td>
+                            <td>无</td>
+                            <td>是</td>
+                        </tr>
+                        <tr>
+                            <td class="text-nowrap">radio-type</td>
+                            <td>radio 的分组范围。chkStyle = "radio" 时生效<br />
+                                radioType = "level" 时，在每一级节点范围内当做一个分组。
+                                radioType = "all" 时，在整棵树范围内当做一个分组。
+                            </td>
+                            <td>字符串</td>
+                            <td>否</td>
+                            <td>"all"</td>
+                            <td>否</td>
+                        </tr>
+                        <tr>
+                            <td class="text-nowrap">check-type</td>
+                            <td> 默认为0 ，要当前下拉树为复选框时生效
+                                0：被勾选时,取消勾选时关联父<br />
+                                1：被勾选时,取消勾选时关联子<br />
+                                2：被勾选时,取消勾选时都关联
+                            </td>
+                            <td>数字</td>
+                            <td>否</td>
+                            <td>0</td>
+                            <td>否</td>
+                        </tr>
+                        <tr>
+                            <td class="text-nowrap">max-tag-Count</td>
+                            <td>最多显示多少个 tag<br />
+                                -1时无上限
+                            </td>
+                            <td>数字</td>
+                            <td>否</td>
+                            <td>999</td>
+                            <td>否</td>
+                        </tr>
+                        <tr>
+                            <td class="text-nowrap">max-choose-num</td>
+                            <td>最多选择多少个结构<br />
+                                -1时无上限
+                            </td>
+                            <td>数字</td>
+                            <td>否</td>
+                            <td>-1</td>
+                            <td>否</td>
+                        </tr>
+                        <tr>
+                            <td class="text-nowrap">id-key</td>
+                            <td>节点数据中保存唯一标识的属性名称。</td>
+                            <td>字符串</td>
+                            <td>否</td>
+                            <td>"id"</td>
+                            <td>否</td>
+                        </tr>
+                        <tr>
+                            <td class="text-nowrap">p-id-key</td>
+                            <td>节点数据中保存其父节点唯一标识的属性名称。</td>
+                            <td>字符串</td>
+                            <td>否</td>
+                            <td>"pId"</td>
+                            <td>否</td>
+                        </tr>
+                        <tr>
+                            <td class="text-nowrap">root-pid</td>
+                            <td>用于修正根节点父节点数据，即 pIdKey 指定的属性值。</td>
+                            <td>字符串/数字</td>
+                            <td>否</td>
+                            <td>null</td>
+                            <td>否</td>
+                        </tr>
+                        <tr>
+                            <td class="text-nowrap">name-key</td>
+                            <td>节点数据保存节点名称的属性名称。</td>
+                            <td>字符串</td>
+                            <td>否</td>
+                            <td>"name"</td>
+                            <td>否</td>
+                        </tr>
+                        <tr>
+                            <td class="text-nowrap">isdelete</td>
+                            <td>是否加入tags删除功能</td>
+                            <td>布尔</td>
+                            <td>否</td>
+                            <td>false</td>
+                            <td>否</td>
+                        </tr>
+                        <tr>
+                            <td class="text-nowrap">change</td>
+                            <td>选择删除回调方法</td>
+                            <td>方法</td>
+                            <td>否</td>
+                            <td>无</td>
+                            <td>否</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <pre class="language-js">树形选择控件基于zTree封装为Vue组件，zTree资料参考官网：http://www.treejs.cn，使用 Metro 风格。</pre>
+            </div>
+        </div>
+
+    </div>
+    <script type="text/javascript" src="../../asset/libs/require.js-2.3.6/require.min.js"></script>
+    <script type="text/javascript" src="../../asset/js/require-config.js"></script>
+    <script type="text/javascript">
+        require(['jquery', 'vue', 'global'], function ($, Vue) {
+            var app = new Vue({
+                el: '#app',
+                data: {
+                    defaultData: [],
+                    defaultData2: [],
+                    organizations: [],
+                    organizations2: [],
+                    organizations3: [],
+                    organizations4: [],
+                    organizations5: [],
+                    selectNode: ["00230000000000000000"], //单选值
+                    selectNodes: ["00230000000000000000", "00230081000000000000",
+                        "00230057000000000000"], //多选值
+                },
+                mounted: function () {
+
+                },
+                methods: {
+                    change: function (items) {
+                        console.log(items)
+                    }
+                }
+            })
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>开发指南</title>
+    <link rel="stylesheet" type="text/css" href="../../asset/css/common.css" />
+</head>
+<body>
+<div id="app" class="warpper" v-cloak>
+    <div class="header">
+        <ul>
+            <li class="home"><a href="#"><img src="../../asset/images/icon-home.png" alt="回到首页"></a></li>
+            <li>|</li>
+            <li>开发指南</li>
+        </ul>
+    </div>
+    <div class="block_container">
+        <div class="title">
+            基础及布局
+        </div>
+        <div class="content">
+            <table class="table_layout_edit">
+                <tr>
+                    <td>详情页</td>
+                    <td><a href="detail.html" target="_blank">detail.html</a></td>
+                    <td>编辑页</td>
+                    <td><a href="edit.html" target="_blank">edit.html</a></td>
+                </tr>
+                <tr>
+                    <td>列表页</td>
+                    <td><a href="list.html" target="_blank">list.html</a></td>
+                    <td>主页</td>
+                    <td><a href="../main/main.html" target="_blank">main.html</a></td>
+                </tr>
+                <tr>
+                    <td>登录页</td>
+                    <td><a href="../login/login.html" target="_blank">login.html</a></td>
+                    <td>列表本页弹层示例</td>
+                    <td><a href="demo-popup.html" target="_blank">demo-popup.html</a</td>
+                </tr>
+                <tr>
+                    <td>按钮页</td>
+                    <td><a href="form-button.html" target="_blank">form-button.html</a></td>
+                    <td>tooltip页</td>
+                    <td><a href="tooltip.html" target="_blank">tooltip.html</a></td>
+                </tr>
+            </table>
+        </div>    
+    </div>
+
+    <div class="block_container">
+        <div class="title">
+            通用组件
+        </div>
+        <div class="content">
+            <table class="table_layout_edit">
+                <tr>
+                    <td>日期控件</td>
+                    <td>
+                        <a href="component-datetime-picker.html" target="_blank">component-datetime-picker.html</a>
+                    </td>
+                    <td>富文本编辑器</td>
+                    <td>
+                        <a href="component-ckeditor.html" target="_blank">component-ckeditor.html</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>分页组件</td>
+                    <td><a href="component-pagination.html" target="_blank">component-pagination.html</a></td>
+                    <td>文件上传组件</td>
+                    <td><a href="component-uploader.html" target="_blank">component-uploader.html</a></td>
+                </tr>
+
+
+                <tr>
+                    <td>checkbox-list，Checkbox多选组件</td>
+                    <td>
+                        <a href="component-checkbox-list.html" target="_blank">component-checkbox-list.html</a>
+                    </td>
+                    <td>checkbox-select，Checkbox下拉选择组件 </td>
+                    <td>
+                        <a href="component-checkbox-select.html" target="_blank">component-checkbox-select.html </a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>文件查看组件</td>
+                    <td><a href="component-files.html" target="_blank">component-files.html</a></td>
+                    <td>popup-input 弹框组件</td>
+                    <td><a href="component-popup-input.html" target="_blank">component-popup-input.html</a></td>
+                </tr>
+                <tr>
+                    <td>下拉tree</td>
+                    <td>
+                        <a href="component-select.html" target="_blank">component-select.html</a>
+                    </td>
+                    <td>下拉模糊查询组件</td>
+                    <td>
+                        <a href="component-fuzzy-query-select.html" target="_blank">component-fuzzy-query-select.html</a>
+                    </td>
+                </tr>
+            </table>
+        </div>    
+    </div>
+
+    <div class="block_container">
+        <div class="title">
+            业务组件
+        </div>
+        <div class="content">
+            <table class="table_layout_edit">
+                <tr>
+                    <td>选用人员(单选)</td>
+                    <td>
+                        <a href="component-select-user.html" target="_blank">component-select-user.html</a>
+                    </td>
+                    <td>金额转大写</td>
+                    <td>
+                        <a href="demo-uppercase.html" target="_blank">demo-uppercase.html</a>
+                    </td>
+                </tr>
+            </table>
+        </div>    
+    </div>
+
+    <div class="block_container">
+        <div class="title">
+            通用指令
+        </div>
+        <div class="content">
+            <table class="table_layout_edit">
+                <tr>
+                    <td>省略过长字段</td>
+                    <td>
+                        <a href="demo-ellipsis.html" target="_blank">demo-ellipsis.html</a>
+                    </td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </table>
+        </div>    
+    </div>
+</div>
+<script type="text/javascript" src="../../asset/libs/require.js-2.3.6/require.min.js"></script>
+<script type="text/javascript" src="../../asset/js/require-config.js"></script>
+<script>
+require(['jquery','vue','global'], function ($, Vue) {
+    var vm = new Vue({
+        el: "#app",
+        data: function () {
+            return {
+            }
+        },
+        mounted: function () {
+                
+        }
+    })
+ });
+</script>
+</body>
+</html>

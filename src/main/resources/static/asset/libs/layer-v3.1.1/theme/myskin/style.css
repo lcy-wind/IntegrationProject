@@ -1,0 +1,13 @@
+/*layer 拓展的css皮肤*/
+body .layui-layer {
+    box-shadow: 0 0 30px rgba(0, 0, 0, .1);
+    border: 1px solid #333333;
+}
+body .layui-layer.layui-layer-loading{
+    border: none;
+}
+body .layui-layer .layui-layer-title{font-weight: bold;background: #fff;margin: 0 10px;padding-left: 2px;}
+body .layui-layer .layui-layer-btn a{
+    height: 32px;
+    line-height: 32px;
+}
