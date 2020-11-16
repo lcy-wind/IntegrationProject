@@ -2,7 +2,7 @@ package com.teamwork.integrationproject;
 
 import com.alibaba.fastjson.JSONObject;
 import com.teamwork.integrationproject.common.props.ApiProperties;
-import com.teamwork.integrationproject.common.rocketmq.AccountStreamService;
+//import com.teamwork.integrationproject.common.rocketmq.AccountStreamService;
 import com.teamwork.integrationproject.entity.Student;
 import com.teamwork.integrationproject.mapper.StudentMapper;
 import com.teamwork.integrationproject.mapper.TUserMapper;
@@ -12,8 +12,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import javax.sql.DataSource;
+import java.math.BigDecimal;
 import java.sql.SQLException;
-import java.util.List;
+import java.text.NumberFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 @SpringBootTest
 class IntegrationProjectApplicationTests
@@ -35,9 +39,14 @@ class IntegrationProjectApplicationTests
     }
 
     @Test
-    void kk()
-    {
-        System.out.println(properties.getName());
+    public void kk() throws ParseException {
+        NumberFormat format = NumberFormat.getPercentInstance();
+//        小数最大保留2位
+//        format.setMaximumFractionDigits(2);
+        String str = format.format(0.036);
+        System.out.println(str);
+
+
     }
 
     @Autowired
@@ -53,11 +62,11 @@ class IntegrationProjectApplicationTests
         LogHelper.info(this,"kkkkkkk");
     }
 
-    @Autowired
-    private AccountStreamService streamService;
-    @Test
-    public void testRocketMQ(){
-        boolean send = streamService.send("hello -rocketMQ-->>");
-    }
+//    @Autowired
+//    private AccountStreamService streamService;
+//    @Test
+//    public void testRocketMQ(){
+//        boolean send = streamService.send("hello -rocketMQ-->>");
+//    }
 
 }

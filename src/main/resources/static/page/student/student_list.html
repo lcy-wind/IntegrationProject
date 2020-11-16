@@ -17,6 +17,13 @@
             标题
         </div>
         <button type="button" class="btn btn_export" @click="exportStudentList">导出</button>
+
+        <form  method="post" action="../../v1/ImportExcelUtiltest" enctype="multipart/form-data">
+            选择文件:<input type="file" name="file">
+            <input type="submit" value="提交">
+        </form>
+
+
         <div class="block_overflow">
             <table class="table_list table_striped table_hover text_center">
                 <thead>
@@ -75,8 +82,39 @@
                     // form.append($("<input></input>").attr("type", "hidden").attr("name", "sendStartDate1").attr("value", that.criteria.sendStartDate1));
                     // form.append($("<input></input>").attr("type", "hidden").attr("name", "sendStartDate2").attr("value", that.criteria.sendStartDate2));
                     form.appendTo('body').submit().remove();
+                },
+                // 导入excel
+                importExcel:function(event) {
 
-                }
+                    var that = this;
+                    var url = "../../v1/ImportExcelUtiltest";
+                    var form = $("<form></form>").attr("action", url).attr("method", "post");
+                    // form.append($("<input></input>").attr("type", "hidden").attr("name", "sendStartDate1").attr("value", that.criteria.sendStartDate1));
+                    // form.append($("<input></input>").attr("type", "hidden").attr("name", "sendStartDate2").attr("value", that.criteria.sendStartDate2));
+                    form.appendTo('body').submit().remove();
+
+
+                    //
+                    // var inputDOM = this.$refs.inputer;
+                    // // 通过DOM取文件数据
+                    // // this.fil = inputDOM.files;
+                    // console.log(inputDOM.files[0])
+                    // var formData = new FormData();
+                    // formData.append('file', inputDOM.files[0]);
+                    // var that = this;
+                    // $.ajax({
+                    //     url: "../../v1/ImportExcelUtiltest",
+                    //     dataType: "json",
+                    //     contentType: "application/json;charset=UTF-8",
+                    //     type: "post",
+                    //     data: formData,
+                    //     success: function (data) {
+                    //
+                    //     }
+                    // });
+
+
+                },
             }
         })
     })

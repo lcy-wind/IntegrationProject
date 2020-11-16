@@ -8,6 +8,11 @@ spring:
     name: project
   profiles:
     active: dev
+  #    文件导入200M
+  servlet:
+    multipart:
+      max-request-size: 209715200
+      max-file-size: 209715200
 #  cloud:
 #    stream:
 #      bindings:
