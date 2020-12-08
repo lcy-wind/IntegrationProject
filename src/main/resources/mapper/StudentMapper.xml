@@ -3,16 +3,16 @@
 <mapper namespace="com.teamwork.integrationproject.mapper.StudentMapper">
 
     <resultMap id="Student" type="com.teamwork.integrationproject.entity.Student">
-        <id property="id" column="s_id"></id>
-        <result property="teacher" column="s_teacher"></result>
+        <result property="name" column="s_name"></result>
+        <result property="age" column="s_age"></result>
+        <result property="grade" column="s_grade"></result>
     </resultMap>
-<!--    <select id="selectStudent" resultType="com.teamwork.integrationproject.entity.Student">-->
-
-<!--    </select>-->
-
-    <!--    select * from t_student where s_teacher like concat('%',#{teacher},'%')-->
-<!--    <select id="selectStudent" resultMap="student">-->
-<!--     select * from t_student where instr(s_teacher,#{teacher})>0-->
-<!--</select>-->
-
+    
+    <insert id="addStudentList" parameterType="java.util.List">
+        insert into t_student (s_name,s_age,s_grade)
+        values
+        <foreach collection="list" item="item" index="index" separator="," >
+            (#{item.name},#{item.age},#{item.grade})
+        </foreach>
+    </insert>
 </mapper>

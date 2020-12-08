@@ -1,15 +1,18 @@
 package com.teamwork.integrationproject.controller;
 
 import com.teamwork.integrationproject.common.export.ExportTemplate;
-//import com.teamwork.integrationproject.common.importExcel.ImportExcelUtil;
 import com.teamwork.integrationproject.dto.StudentDto;
+import com.teamwork.integrationproject.entity.Student;
 import com.teamwork.integrationproject.service.StudentService;
+import com.teamwork.integrationproject.service.impl.StudentServiceImpl;
+import com.teamwork.integrationproject.utils.excel.ExcelImportUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -41,37 +44,26 @@ public class ExportController {
         ExportTemplate.exportStudent(response,"学生表导出",dataList);
     }
 
-//    @PostMapping("/ImportExcelUtiltest")
-//    public void ImportExcelUtiltest(MultipartFile multipartFile,Class<?> clazz)
-//    {
-//        try
-//        {
-//            List<List<Object>> lists = ImportExcelUtil.importExcelMultipartFile(multipartFile, 1, 0, clazz);
-//
-//        }
-//        catch (Exception e)
-//        {
-//            throw new RuntimeException("导入异常",e);
-//        }
-//    }
-
-    @PostMapping("/ImportExcelUtiltest")
-    public void importAlarmEvents(@RequestBody MultipartFile file) {
-        Class<?> clazz = null;
+    /**
+     * 导入student
+     * @param file
+     */
+    @PostMapping("/importStudent")
+    public void importStudent(@RequestParam("file") MultipartFile file) {
+        // 从Excel第一行起到最后一行结束,
         try {
-            // 从Excel第一行起到最后一行结束,
-            List<List<String>> excelData = ImportExcelUtil.readExcel(file);
-            if (excelData.isEmpty()) {
-                throw new RuntimeException("excel为空");
-            }
-//            //将Excel中数据，转为你的实体类
-//            List<List<EventDTO>> alarmList = new ArrayList<>();
-//            for (List<?> list : excelData) {
-//                alarmList.add((List<EventDTO>) list);
-//            }
-//            Map<String, Object> res = eventService.importEvent(alarmList);
-        } catch (Exception e) {
-            e.printStackTrace();
+            List<Student> students = new ArrayList<>();
+            List<List<String>>  importData = ExcelImportUtils.readExcel(file,0,2);
+            importData.forEach(data -> {
+                Student student = new Student();
+                student.setName(data.get(0));
+                student.setAge(Integer.parseInt(data.get(1)));
+                student.setGrade(data.get(2));
+                students.add(student);
+            });
+            studentService.addStudentList(students);
+        } catch (IOException e) {
+            throw new RuntimeException("导入异常!",e);
         }
     }
 

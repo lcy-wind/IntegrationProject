@@ -25,7 +25,7 @@ public class ExportTemplate
         title.add(new String[]{"age","年龄","5000", CellType.NUMERIC+""});
         title.add(new String[]{"grade","年级","5000", CellType.STRING+""});
         XssExcelUtils.createSheetByContent(wb,fileName,title,dataList);
-        XssExcelUtils.writeFile(response,fileName+".xls",wb);
+        XssExcelUtils.writeFile(response,fileName+".xlsx",wb);
     }
 
 }

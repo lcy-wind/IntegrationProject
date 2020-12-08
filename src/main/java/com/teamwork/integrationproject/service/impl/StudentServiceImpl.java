@@ -43,4 +43,9 @@ public class StudentServiceImpl extends ServiceImpl<StudentMapper, Student> impl
         }
         return studentDtoList;
     }
+
+    @Override
+    public void addStudentList(List<Student> studentList) {
+        studentMapper.addStudentList(studentList);
+    }
 }

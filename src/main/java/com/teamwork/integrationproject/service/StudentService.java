@@ -12,4 +12,5 @@ public interface StudentService extends IService<Student> {
 
     List<StudentDto> selectStudentList();
 
+    void addStudentList(List<Student> studentList);
 }
