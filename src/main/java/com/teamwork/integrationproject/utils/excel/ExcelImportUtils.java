@@ -179,10 +179,14 @@ public class ExcelImportUtils
             case BOOLEAN:
                 cellValue = String.valueOf(cell.getBooleanCellValue());
                 break;
-            //公式
+             //公式
             case FORMULA:
-                cellValue = String.valueOf(cell.getStringCellValue());
-                break;
+                try {
+                    cellValue = cell.getStringCellValue();
+                } catch (IllegalStateException e) {
+                    cellValue = String.valueOf(cell.getNumericCellValue());
+                }
+
             //空值
             case BLANK:
                 cellValue = "";

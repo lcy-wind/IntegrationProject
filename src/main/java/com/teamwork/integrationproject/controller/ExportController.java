@@ -1,6 +1,7 @@
 package com.teamwork.integrationproject.controller;
 
 import com.teamwork.integrationproject.common.export.ExportTemplate;
+import com.teamwork.integrationproject.dto.GenericTypeResponse;
 import com.teamwork.integrationproject.dto.StudentDto;
 import com.teamwork.integrationproject.entity.Student;
 import com.teamwork.integrationproject.service.StudentService;
@@ -49,7 +50,7 @@ public class ExportController {
      * @param file
      */
     @PostMapping("/importStudent")
-    public void importStudent(@RequestParam("file") MultipartFile file) {
+    public GenericTypeResponse importStudent(@RequestParam("file") MultipartFile file) {
         // 从Excel第一行起到最后一行结束,
         try {
             List<Student> students = new ArrayList<>();
@@ -61,10 +62,11 @@ public class ExportController {
                 student.setGrade(data.get(2));
                 students.add(student);
             });
+            GenericTypeResponse<Object> objectGenericTypeResponse = new GenericTypeResponse<>();
             studentService.addStudentList(students);
+            return objectGenericTypeResponse;
         } catch (IOException e) {
             throw new RuntimeException("导入异常!",e);
         }
     }
-
 }
