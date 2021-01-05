@@ -10,6 +10,7 @@ import com.teamwork.integrationproject.utils.log.LogHelper;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.util.Assert;
 import org.springframework.util.StringUtils;
 
 import javax.sql.DataSource;
@@ -67,11 +68,12 @@ class IntegrationProjectApplicationTests
         student2.setAge(3);
         student2.setName("3");
         student2.setGrade("3");
-        students.add(student);
-        students.add(student1);
-        students.add(student2);
-        studentMapper.addStudentList(students);
-        System.out.println(JSONObject.toJSONString(student));
+//        students.add(student);
+//        students.add(student1);
+//        students.add(student2);
+
+//        studentMapper.addStudentList(students);
+//        System.out.println(JSONObject.toJSONString(student));
 
         LogHelper.info(this,"kkkkkkk");
     }
@@ -82,5 +84,12 @@ class IntegrationProjectApplicationTests
 //    public void testRocketMQ(){
 //        boolean send = streamService.send("hello -rocketMQ-->>");
 //    }
+
+    @Test
+    public void test()
+    {
+        System.out.println(System.currentTimeMillis());
+
+    }
 
 }

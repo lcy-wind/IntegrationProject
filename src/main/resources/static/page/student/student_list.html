@@ -89,7 +89,8 @@
                     uploadExcelForm.append('file', $('#importStudentFile')[0].files[0]);
                     $.ajax({
                         type: 'POST',
-                        url: '../../v1/importStudent',
+                        // url: '../../v1/importStudent',
+                        url: '../../v1/impExcel',
                         data: uploadExcelForm,
                         contentType: false,
                         processData: false,

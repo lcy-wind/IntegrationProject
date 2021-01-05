@@ -2,7 +2,6 @@ server:
   port: 8081
   servlet:
     context-path: /app/teamwork
-
 spring:
   application:
     name: project
@@ -11,6 +10,7 @@ spring:
   #    文件导入200M
   servlet:
     multipart:
+      enabled: true
       max-request-size: 209715200
       max-file-size: 209715200
 #  cloud:
