@@ -5,10 +5,7 @@ import lombok.Getter;
 
 import javax.servlet.http.HttpServletResponse;
 
-/**
- * Author Anyho(wuh@infoepoh.com)
- * Time   2019/12/8 21:07 星期日
- */
+
 @Getter
 @AllArgsConstructor
 public enum ResultCode

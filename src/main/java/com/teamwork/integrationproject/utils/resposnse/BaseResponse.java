@@ -6,10 +6,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.util.StringUtils;
 
-/**
- * Author Anyho(wuh@infoepoh.com)
- * Time   2019/12/8 21:06 星期日
- */
 @Data
 @NoArgsConstructor
 @AllArgsConstructor

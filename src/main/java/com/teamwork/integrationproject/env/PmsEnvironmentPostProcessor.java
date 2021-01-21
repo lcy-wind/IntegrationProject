@@ -19,7 +19,6 @@ import java.util.List;
 
 /**
  * 实现应用配置的自定义加载，方便配置文件可以自定义，不仅仅局限于application
- * Author anyho
  * Time   2020/3/5 21:35 星期四
  */
 public class PmsEnvironmentPostProcessor implements EnvironmentPostProcessor
