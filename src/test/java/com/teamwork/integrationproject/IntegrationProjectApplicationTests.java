@@ -2,10 +2,9 @@ package com.teamwork.integrationproject;
 
 import com.teamwork.integrationproject.common.props.ApiProperties;
 //import com.teamwork.integrationproject.common.rocketmq.AccountStreamService;
-import com.teamwork.integrationproject.entity.Student;
-import com.teamwork.integrationproject.mapper.StudentMapper;
+import com.teamwork.integrationproject.dto.StudentDto;
 import com.teamwork.integrationproject.mapper.TUserMapper;
-import com.teamwork.integrationproject.utils.log.LogHelper;
+import com.teamwork.integrationproject.service.impl.StudentServiceImpl;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -14,7 +13,7 @@ import javax.sql.DataSource;
 import java.sql.SQLException;
 import java.text.NumberFormat;
 import java.text.ParseException;
-import java.util.*;
+import java.util.List;
 import java.util.concurrent.CountDownLatch;
 
 @SpringBootTest
@@ -47,39 +46,13 @@ class IntegrationProjectApplicationTests
     }
 
     @Autowired
-    private StudentMapper studentMapper;
+    private StudentServiceImpl studentService;
+
     @Test
     void TestStudent()
     {
-        List<Student> students = new ArrayList<>();
-        Student student = new Student();
-        student.setAge(1);
-        student.setName("1");
-        student.setGrade("1");
-        Student student1 = new Student();
-        student1.setAge(2);
-        student1.setName("2");
-        student1.setGrade("2");
-        Student student2 = new Student();
-        student2.setAge(3);
-        student2.setName("3");
-        student2.setGrade("3");
-//        students.add(student);
-//        students.add(student1);
-//        students.add(student2);
-
-//        studentMapper.addStudentList(students);
-//        System.out.println(JSONObject.toJSONString(student));
-
-        LogHelper.info(this,"kkkkkkk");
+//        List<StudentDto> studentDtos = studentService.selectStudentListPage();
     }
-
-//    @Autowired
-//    private AccountStreamService streamService;
-//    @Test
-//    public void testRocketMQ(){
-//        boolean send = streamService.send("hello -rocketMQ-->>");
-//    }
 
     @Test
     public void test() throws InterruptedException {

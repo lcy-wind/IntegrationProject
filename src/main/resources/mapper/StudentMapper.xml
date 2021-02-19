@@ -7,7 +7,7 @@
         <result property="age" column="s_age"></result>
         <result property="grade" column="s_grade"></result>
     </resultMap>
-    
+
     <insert id="addStudentList" parameterType="java.util.List">
         insert into t_student (s_name,s_age,s_grade)
         values
@@ -15,4 +15,8 @@
             (#{item.name},#{item.age},#{item.grade})
         </foreach>
     </insert>
+
+    <select id="selectStudentPage" resultMap="Student">
+        select * from t_student
+    </select>
 </mapper>

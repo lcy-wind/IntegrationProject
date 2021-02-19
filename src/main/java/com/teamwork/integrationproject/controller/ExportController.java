@@ -1,5 +1,7 @@
 package com.teamwork.integrationproject.controller;
 
+import com.alibaba.excel.EasyExcel;
+import com.teamwork.integrationproject.actualCombatImport.TestDemo;
 import com.teamwork.integrationproject.common.export.ExportTemplate;
 import com.teamwork.integrationproject.dto.GenericTypeResponse;
 import com.teamwork.integrationproject.dto.StudentDto;
@@ -13,6 +15,7 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.net.URLEncoder;
 import java.util.*;
 
 /**
@@ -64,5 +67,21 @@ public class ExportController {
         } catch (IOException e) {
             throw new RuntimeException("导入异常!",e);
         }
+    }
+
+
+    //针对表数据进行导出
+    @PostMapping("/test")
+    public GenericTypeResponse test(HttpServletResponse response) throws IOException {
+        response.setContentType("application/vnd.ms-excel");
+        response.setCharacterEncoding("utf-8");
+        String fileName = URLEncoder.encode("吼吼哈哈", "UTF-8").replaceAll("\\+", "%20");
+        response.setHeader("Content-disposition", "attachment;filename*=utf-8''" + fileName + ".xlsx");
+        List<TestDemo> testDemos = new ArrayList<>();
+        testDemos.add(TestDemo.builder().kk("我觉得我能成功？").build());
+        EasyExcel.write(response.getOutputStream(), TestDemo.class).sheet("模板")
+                .doWrite(testDemos);
+        GenericTypeResponse<Object> objectGenericTypeResponse = new GenericTypeResponse<>();
+        return objectGenericTypeResponse;
     }
 }

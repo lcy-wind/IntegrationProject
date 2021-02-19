@@ -23,7 +23,7 @@ public class DemoController {
     @Autowired
     private DemoDAO demoDAO;
 
-//    @PostMapping("impExcel")
+    @PostMapping("impExcel")
     public String actualCombatImport(MultipartFile file) throws IOException {
         long start = System.currentTimeMillis();
         EasyExcel.read(file.getInputStream(), DemoData.class, new DemoDataListener(demoDAO)).sheet().doRead();

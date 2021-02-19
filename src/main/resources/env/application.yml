@@ -40,3 +40,8 @@ logging:
     root: error
     com:
       teamwork: debug
+pagehelper:
+  helperDialect: mysql
+  reasonable: false
+  params: count=countSql
+  supportMethodsArguments: true
