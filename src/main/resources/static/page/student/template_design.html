@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>简单页面随机测试</title>
+    <link rel="stylesheet" type="text/css" href="../../asset/css/common.css" />
+</head>
+<body>
+<div id="app" class="warpper" v-cloak>
+    <div class="header">
+        <ul>
+            <li>简单页面随机测试</li>
+        </ul>
+    </div>
+    <div class="block_container">
+        <div class="title">
+            标题
+        </div>
+        <button type="button" class="btn btn_export" @click="test">导出</button>
+    </div>
+</div>
+<script type="text/javascript" src="../../asset/libs/require.js-2.3.6/require.min.js"></script>
+<script type="text/javascript" src="../../asset/js/require-config.js"></script>
+<script>
+    require(['jquery','vue','global'], function ($, Vue) {
+        var vm = new Vue({
+            el: "#app",
+            data:{
+                dataList:{
+                },
+            },
+            mounted: function () {
+            },
+            methods: {
+                test:function () {
+                    //生成form表单的形式  提供查询条件和需要导出的数据的接口
+                    var url = "../../v1/templateDesign";
+                    var form = $("<form></form>").attr("action", url).attr("method", "post");
+                    // form.append($("<input></input>").attr("type", "hidden").attr("name", "sendStartDate1").attr("value", that.criteria.sendStartDate1));
+                    // form.append($("<input></input>").attr("type", "hidden").attr("name", "sendStartDate2").attr("value", that.criteria.sendStartDate2));
+                    form.appendTo('body').submit().remove();
+                }
+            }
+        })
+    })
+</script>
+</body>
+</html>

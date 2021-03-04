@@ -13,6 +13,30 @@ spring:
       enabled: true
       max-request-size: 209715200
       max-file-size: 209715200
+#      邮件发送
+  mail:
+    host: smtp.exmail.qq.com #SMTP服务器地址
+    username:  liucy@infoepoch.com #登陆账号
+    password:  kkk #登陆密码（或授权码）
+    properties:
+      from: liucy@infoepoch.com #邮件发信人（即真实邮箱）
+  thymeleaf:
+    cache: false
+    prefix: classpath:/views/
+
+#日志
+logging:
+  file:
+    path: /app/teamwork/log/project/${spring.application.name}.log
+  level:
+    root: error
+    com:
+      teamwork: debug
+pagehelper:
+  helperDialect: mysql
+  reasonable: false
+  params: count=countSql
+  supportMethodsArguments: true
 #  cloud:
 #    stream:
 #      bindings:
@@ -32,16 +56,3 @@ spring:
 #              sync: true
 #              vipChannelEnabled: false
 #  #              transactional: true
-#日志
-logging:
-  file:
-    path: /app/teamwork/log/project/${spring.application.name}.log
-  level:
-    root: error
-    com:
-      teamwork: debug
-pagehelper:
-  helperDialect: mysql
-  reasonable: false
-  params: count=countSql
-  supportMethodsArguments: true
