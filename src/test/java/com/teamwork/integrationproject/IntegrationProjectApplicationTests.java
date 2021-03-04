@@ -2,6 +2,8 @@ package com.teamwork.integrationproject;
 
 import com.teamwork.integrationproject.common.props.ApiProperties;
 //import com.teamwork.integrationproject.common.rocketmq.AccountStreamService;
+import com.teamwork.integrationproject.controller.EmailController;
+import com.teamwork.integrationproject.controller.ExportController;
 import com.teamwork.integrationproject.dto.StudentDto;
 import com.teamwork.integrationproject.mapper.TUserMapper;
 import com.teamwork.integrationproject.service.impl.StudentServiceImpl;
@@ -14,6 +16,7 @@ import java.sql.SQLException;
 import java.text.NumberFormat;
 import java.text.ParseException;
 import java.util.List;
+import java.util.StringJoiner;
 import java.util.concurrent.CountDownLatch;
 
 @SpringBootTest
@@ -47,11 +50,15 @@ class IntegrationProjectApplicationTests
 
     @Autowired
     private StudentServiceImpl studentService;
+    @Autowired
+    private EmailController emailController;
 
     @Test
     void TestStudent()
     {
 //        List<StudentDto> studentDtos = studentService.selectStudentListPage();
+        emailController.sendEmail();
+
     }
 
     @Test
@@ -79,6 +86,5 @@ class IntegrationProjectApplicationTests
         //3、 当前线程挂起等待
         latch.await();
         System.out.println("主线程执行完毕....");
-
     }
 }

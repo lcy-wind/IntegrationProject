@@ -1,13 +1,16 @@
 package com.teamwork.integrationproject.service.impl;
 
 
+import com.alibaba.excel.EasyExcel;
 import com.alibaba.excel.ExcelWriter;
 import com.alibaba.excel.metadata.Sheet;
 import com.alibaba.excel.metadata.Table;
 import com.alibaba.excel.support.ExcelTypeEnum;
+import com.alibaba.excel.write.metadata.WriteSheet;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.teamwork.integrationproject.actualCombatImport.DemoData;
 import com.teamwork.integrationproject.dto.StudentDto;
 import com.teamwork.integrationproject.entity.Student;
 import com.teamwork.integrationproject.mapper.StudentMapper;
@@ -20,6 +23,7 @@ import org.springframework.util.CollectionUtils;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -56,26 +60,18 @@ public class StudentServiceImpl extends ServiceImpl<StudentMapper, Student> impl
 
     @Override
     public List<StudentDto> selectStudentListPage(HttpServletResponse response) throws IOException {
-        ServletOutputStream out = null;
+        List<StudentDto> studentDtos = new ArrayList<>();
+        response.setContentType("application/vnd.ms-excel");
+        response.setCharacterEncoding("utf-8");
+        String fileName = URLEncoder.encode("模板测试", "UTF-8").replaceAll("\\+", "%20");
+        response.setHeader("Content-disposition", "attachment;filename*=utf-8''" + fileName + ".xlsx");
+        ExcelWriter excelWriter = EasyExcel.write(response.getOutputStream()).build();
         try {
-            out = response.getOutputStream();
-            ExcelWriter writer = new ExcelWriter(out, ExcelTypeEnum.XLSX);
-            // 设置EXCEL名称
-            String fileName = new String(("SystemExcel").getBytes(), "UTF-8");
-            // 设置SHEET名称
-            Sheet sheet = new Sheet(1, 0);
-            sheet.setSheetName("系统列表sheet1");
-            Table table = new Table(0);
-            List<List<String>> titles = new ArrayList<List<String>>();
-            titles.add(Arrays.asList("系统名称"));
-            titles.add(Arrays.asList("系统标识"));
-            titles.add(Arrays.asList("状态"));
-            table.setHead(titles);
-            List<StudentDto> studentDtos = new ArrayList<>();
             PageHelper.startPage(1, 50);
             List<Student> students = studentMapper.selectList(null);
             PageInfo<Student> totalPage = new PageInfo<>(students);
             for (int i = 0; i <= totalPage.getPages(); i++) {
+                WriteSheet writeSheet = EasyExcel.writerSheet(0, "模板1").head(StudentDto.class).build();
                 PageHelper.startPage(i, 50);
                 List<Student> studentList = studentMapper.selectStudentPage();
                 PageInfo<Student> pageInfo = new PageInfo<>(studentList);
@@ -85,30 +81,35 @@ public class StudentServiceImpl extends ServiceImpl<StudentMapper, Student> impl
                     BeanUtils.copyProperties(student, studentDto);
                     return studentDto;
                 }).collect(Collectors.toList()));
-                writer.write0(studentDtos, sheet, table);
-                System.out.println("-----------------------------");
+                excelWriter.write(studentDtos, writeSheet);
                 studentDtos.clear();
             }
-            // 下载EXCEL
-            response.setHeader("Content-Disposition", "attachment;filename=" + new String((fileName).getBytes("gb2312"), "ISO-8859-1") + ".xlsx");
-            response.setCharacterEncoding("utf-8");
-            writer.finish();
-            out.flush();
+            for (int i = 0; i <= totalPage.getPages(); i++) {
+                WriteSheet writeSheet = EasyExcel.writerSheet(1, "模板2").head(StudentDto.class).build();
+                PageHelper.startPage(i, 50);
+                List<Student> studentList = studentMapper.selectStudentPage();
+                PageInfo<Student> pageInfo = new PageInfo<>(studentList);
+                List<Student> list = pageInfo.getList();
+                studentDtos.addAll(list.stream().map(student -> {
+                    StudentDto studentDto = new StudentDto();
+                    BeanUtils.copyProperties(student, studentDto);
+                    return studentDto;
+                }).collect(Collectors.toList()));
+                excelWriter.write(studentDtos, writeSheet);
+                studentDtos.clear();
+            }
 
         } finally {
-            if (out != null) {
-                try {
-                    out.close();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
+            // 千万别忘记finish 会帮忙关闭流
+            if (excelWriter != null) {
+                excelWriter.finish();
             }
         }
         return null;
     }
 
-    @Override
-    public void addStudentList(List<Student> studentList) {
-        studentMapper.addStudentList(studentList);
+        @Override
+        public void addStudentList(List<Student> studentList) {
+            studentMapper.addStudentList(studentList);
+        }
     }
-}
