@@ -108,7 +108,6 @@ public class ExportController {
         templateDesign1.setUsername("刺激呀");
         templateDesigns.add(templateDesign);
         templateDesigns.add(templateDesign1);
-
         EasyExcel.write(response.getOutputStream(), TemplateDesign.class).sheet("模板")
                 .doWrite(templateDesigns);
     }

@@ -6,6 +6,7 @@ import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.mail.MessagingException;
+import java.io.File;
 import java.util.Date;
 
 /**
@@ -19,24 +20,19 @@ public class EmailController {
     @Autowired
     private JavaMailSenderImpl mailSender;
 
-    public void sendEmail(){
+    public void sendEmail(String fileName){
         try {
-            MimeMessageHelper messageHelper = new MimeMessageHelper(mailSender.createMimeMessage(), true);//true表示支持复杂类型
-            messageHelper.setFrom("liucy@infoepoch.com");//邮件发信人
-            messageHelper.setTo("2687784802@qq.com");//邮件收信人
-            messageHelper.setSubject("桥边姑娘");//邮件主题
-            messageHelper.setText("happy new Year");//邮件内容
+            MimeMessageHelper messageHelper = new MimeMessageHelper(mailSender.createMimeMessage(), true);
+            messageHelper.setFrom("liucy@infoepoch.com");
+            messageHelper.setTo("2687784802@qq.com");
+            messageHelper.setSubject("咳咳！");
+            messageHelper.setText("happy new Year");
             messageHelper.setSentDate(new Date());
-            mailSender.send(messageHelper.getMimeMessage());//正式发送邮件
-
-
-//            messageHelper.setCc("happly new Year");//抄送
-//            if (mailVo.getMultipartFiles() != null) {//添加邮件附件
-//                for (MultipartFile multipartFile : mailVo.getMultipartFiles()) {
-//                    messageHelper.addAttachment(multipartFile.getOriginalFilename(), multipartFile);
-//                }
-//            }
-
+            messageHelper.addAttachment("咳咳.xlsx", new File(fileName));
+            mailSender.send(messageHelper.getMimeMessage());
+            //邮件发送完后进行文件删除
+            File file = new File(fileName);
+            file.delete();
         } catch (MessagingException e) {
             throw new RuntimeException("邮件发送失败",e);
         }
