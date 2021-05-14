@@ -1,7 +1,6 @@
 package com.teamwork.integrationproject.controller;
 
 import com.alibaba.excel.EasyExcel;
-import com.teamwork.integrationproject.actualCombatImport.TestDemo;
 import com.teamwork.integrationproject.common.export.ExportTemplate;
 import com.teamwork.integrationproject.common.export.TemplateDesign;
 import com.teamwork.integrationproject.dto.GenericTypeResponse;
@@ -10,16 +9,12 @@ import com.teamwork.integrationproject.entity.Student;
 import com.teamwork.integrationproject.service.StudentService;
 import com.teamwork.integrationproject.utils.excel.ExcelImportUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.mail.javamail.JavaMailSenderImpl;
-import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.mail.MessagingException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.*;
 

@@ -19,4 +19,9 @@
     <select id="selectStudentPage" resultMap="Student">
         select * from t_student
     </select>
+
+    <select id="kkk" resultType="java.util.Map">
+               select * from t_student
+    </select>
+
 </mapper>

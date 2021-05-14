@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.mail.MessagingException;
 import java.io.File;
 import java.util.Date;
+import java.util.Properties;
 
 /**
  * Author liucy(liucy@infoepoch.com)
